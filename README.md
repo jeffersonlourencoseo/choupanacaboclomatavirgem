@@ -13,7 +13,7 @@ npm run build    # gera dist/
 ## Páginas
 
 - `/` início
-- `/a-casa/` história, regente, zelador e vertente
+- `/a-casa/` história, regente, mestre da casa e vertente
 - `/giras/` dia, horário, linhas e doações (com FAQ)
 - `/primeira-visita/` passo a passo (com FAQ)
 - `/tour-virtual/` tour 360°, com 12 cenas em `public/tour/`
@@ -48,6 +48,6 @@ Title e description no tamanho certo, canonical, Open Graph e Twitter Card, sche
 2. **Endereço**: o Google diz R. Mercúrio, 70 (Lagoinha); a bio do Instagram diz Rua Netuno, 61 (Vila Olímpio 2). O site usa o do Google.
 3. **Giras**: calendário informado pela casa em 11/11/2026 (ver seção Calendário).
 4. **Doações**: confirmadas pela descrição do Perfil no Google.
-5. **Textos doutrinários** (linhas, Raiz de Guiné, Caboclo Mata Virgem como caboclo de Oxóssi): pedir para o Pai Jorge Miguel revisar.
+5. **Textos doutrinários** (linhas, Raiz de Guiné, Caboclo Mata Virgem como caboclo de Oxóssi): pedir para o Mestre “Abayratan” Jorge Miguel revisar.
 6. **Facebook**: `facebook.com/ordem.jurema` (o nome da página bate, mas confirmar).
 7. **GA4**: preencher `ga4Id` quando criar a propriedade.
