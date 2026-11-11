@@ -3,7 +3,7 @@ import { site } from '../config/site';
 export const faqGeral = [
   {
     q: 'Onde fica a Choupana do Caboclo Mata Virgem?',
-    a: `A casa fica na ${site.endereco.rua}, no bairro ${site.endereco.bairro}, em ${site.endereco.cidade} (RJ), CEP ${site.endereco.cep}. Há estacionamento gratuito no local e na rua. Pelo botão "Traçar rota" o Google Maps leva você até o portão.`,
+    a: `A casa fica na ${site.endereco.rua}, no bairro ${site.endereco.bairro}, em ${site.endereco.cidade} (RJ), CEP ${site.endereco.cep}. Há estacionamento gratuito no local e na rua. Pelo botão “Traçar rota”, o Google Maps leva você até o portão.`,
   },
   {
     q: 'Quando acontecem as giras abertas?',
