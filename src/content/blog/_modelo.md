@@ -16,7 +16,7 @@ categoria: Fundamentos
 capa: ./imagens/caboclo-mata-virgem.jpg
 capaAlt: Descreva o que aparece na foto
 # Autor (opcional). Sem esta linha, o autor é a própria casa.
-# autor: Pai Jorge Miguel
+# autor: Mestre “Abayratan” Jorge Miguel
 # true = não publica ainda
 rascunho: true
 ---

@@ -38,9 +38,9 @@ O nome da nossa casa conversa com essa imagem. A Choupana do Caboclo Mata Virgem
 
 ## Como o Caboclo Mata Virgem trabalha na Choupana
 
-Na Choupana, o Caboclo Mata Virgem é o regente: ele orienta os trabalhos da casa, ao lado do zelador, Pai Jorge Miguel. Nas giras de Caboclos, ele e os outros caboclos da corrente atendem o público com passes e consultas, sempre de graça.
+Na Choupana, o Caboclo Mata Virgem é o regente: ele orienta os trabalhos da casa, ao lado do Mestre “Abayratan” Jorge Miguel. Nas giras de Caboclos, ele e os outros caboclos da corrente atendem o público com passes e consultas.
 
-Cada casa de Umbanda tem seus próprios fundamentos, e a forma como um guia trabalha pode variar de um terreiro para outro. Na Choupana, seguimos a Umbanda de Raiz de Guiné, e quem orienta o que é feito na gira é o próprio Caboclo, por meio da corrente e do zelador.
+Cada casa de Umbanda tem seus próprios fundamentos, e a forma como um guia trabalha pode variar de um terreiro para outro. Na Choupana, seguimos a Umbanda de Raiz de Guiné, e quem orienta o que é feito na gira é o próprio Caboclo, por meio da corrente e do Mestre “Abayratan” Jorge Miguel.
 
 ## Como conhecer o Caboclo Mata Virgem
 
