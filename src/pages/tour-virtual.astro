@@ -1,0 +1,49 @@
+---
+import Base from '../layouts/Base.astro';
+import Tour360 from '../components/Tour360.astro';
+import Chamada from '../components/Chamada.astro';
+import { site } from '../config/site';
+import { cenas } from '../data/tour';
+
+const schema = [
+  {
+    '@type': 'ImageGallery',
+    name: 'Tour virtual 360° da Choupana do Caboclo Mata Virgem',
+    about: { '@id': `${site.url}/#templo` },
+    image: cenas.map((c) => ({
+      '@type': 'ImageObject',
+      contentUrl: `${site.url}/tour/${c.id}.jpg`,
+      thumbnailUrl: `${site.url}/tour/${c.id}-thumb.webp`,
+      name: `${c.titulo} (${c.periodo === 'dia' ? 'de dia' : 'à noite'})`,
+      description: c.legenda,
+    })),
+  },
+];
+---
+<Base
+  title="Tour virtual 360° | Choupana do Caboclo Mata Virgem"
+  description="Conheça por dentro, em fotos 360°, o templo de Umbanda Choupana do Caboclo Mata Virgem em Nova Iguaçu: rua, quintal, assistência e congá, de dia e à noite."
+  breadcrumbs={[{ name: 'Tour 360°', path: '/tour-virtual/' }]}
+  schema={schema}
+>
+  <section class="pt-10 md:pt-16 pb-20 md:pb-28">
+    <div class="wrap">
+      <nav aria-label="Trilha" class="text-sm text-tinta-suave">
+        <ol class="flex flex-wrap items-center gap-2">
+          <li><a href="/" class="hover:text-anil">Início</a></li>
+          <li aria-hidden="true">/</li>
+          <li aria-current="page" class="text-tinta">Tour 360°</li>
+        </ol>
+      </nav>
+      <div class="mt-10 grid gap-6 lg:grid-cols-12 items-end mb-10">
+        <div class="lg:col-span-7">
+          <p class="eyebrow">Tour virtual</p>
+          <h1 class="mt-4 text-[2.6rem] sm:text-5xl md:text-6xl text-anil-escuro">A Choupana em 360°</h1>
+        </div>
+        <p class="lg:col-span-5 text-lg text-tinta-suave">Doze ambientes fotografados em 360°, de dia e em noite de gira. Arraste a imagem ou use o giroscópio do celular para olhar ao redor. Toque nas miniaturas para trocar de ambiente.</p>
+      </div>
+      <Tour360 autoStart />
+    </div>
+  </section>
+  <Chamada local="tour_chamada" titulo="Agora venha conhecer de perto" />
+</Base>

@@ -1,0 +1,27 @@
+---
+import Base from '../layouts/Base.astro';
+import PageHero from '../components/PageHero.astro';
+import { site } from '../config/site';
+---
+<Base
+  title="Política de privacidade | Choupana do Caboclo Mata Virgem"
+  description="Como o site da Choupana do Caboclo Mata Virgem trata dados de visitantes: sem cadastro, mapa do Google carregado só com o seu clique e métricas anônimas."
+  breadcrumbs={[{ name: 'Privacidade', path: '/privacidade/' }]}
+>
+  <PageHero crumb="Privacidade" eyebrow="Transparência" titulo="Política de privacidade" lead="Este site é informativo. Não pedimos cadastro nem guardamos dados pessoais de quem visita." />
+  <section class="pb-24">
+    <div class="wrap">
+      <article class="prose-casa text-lg text-tinta-suave max-w-3xl">
+        <h2 class="!mt-0">Quais dados coletamos</h2>
+        <p>O site não tem formulário nem cadastro. Quando você fala com a casa pelo WhatsApp, a conversa acontece no próprio aplicativo, sob as regras de privacidade do WhatsApp.</p>
+        <h2>Métricas de acesso</h2>
+        <p>Podemos usar o Google Analytics para saber, de forma agregada, quantas pessoas visitam o site e quais botões são mais usados. Essas informações não identificam você pessoalmente.</p>
+        <h2>Mapa e conteúdo de terceiros</h2>
+        <p>O mapa do Google só é carregado quando você clica em “Mostrar mapa”. Os links para Instagram, Facebook e Google Maps levam a serviços externos, com políticas próprias.</p>
+        <h2>Seus direitos</h2>
+        <p>Em conformidade com a Lei Geral de Proteção de Dados (Lei nº 13.709/2018), você pode pedir informações sobre seus dados pelo WhatsApp {site.telefone}.</p>
+        <p class="text-sm">Atualizada em novembro de 2026.</p>
+      </article>
+    </div>
+  </section>
+</Base>

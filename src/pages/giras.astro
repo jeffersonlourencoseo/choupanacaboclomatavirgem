@@ -1,0 +1,115 @@
+---
+import { Image } from 'astro:assets';
+import Base from '../layouts/Base.astro';
+import PageHero from '../components/PageHero.astro';
+import Faq from '../components/Faq.astro';
+import Chamada from '../components/Chamada.astro';
+import { site, whatsappLink } from '../config/site';
+import salao from '../assets/fotos/salao-noite.jpg';
+import conga from '../assets/fotos/conga-noite-detalhe.jpg';
+
+const faq = [
+  {
+    q: 'Qual o dia e o horário da gira aberta?',
+    a: `As giras abertas da Choupana acontecem aos sábados, a partir das 18h, de 15 em 15 dias. A data pode mudar em feriados e datas festivas, por isso confirme a próxima gira pelo WhatsApp ${site.telefone}.`,
+  },
+  {
+    q: 'Quanto custa a consulta com as entidades?',
+    a: 'Nada. O atendimento nas giras abertas da Choupana é gratuito: passe e consulta com Caboclos, Pretos Velhos, Crianças ou Exu, conforme a linha que trabalha no dia. A casa não cobra por atendimento espiritual.',
+  },
+  {
+    q: 'Preciso marcar horário?',
+    a: 'Não é preciso marcar. Basta chegar no horário da gira. Se for sua primeira vez ou se precisar de uma orientação específica, mande uma mensagem pelo WhatsApp antes de vir.',
+  },
+  {
+    q: 'Posso levar alguma doação?',
+    a: 'Pode, se quiser. Doação é sempre opcional. A casa usa nos trabalhos materiais como velas brancas, defumadores, charutos e fumo de cachimbo. Pergunte pelo WhatsApp o que está faltando no momento.',
+  },
+  {
+    q: 'Posso levar crianças?',
+    a: 'A casa tem fraldário e espaço para amamentação. Se for levar crianças, converse antes com a casa pelo WhatsApp para saber qual é a melhor gira.',
+  },
+];
+---
+<Base
+  title="Giras de Umbanda em Nova Iguaçu | Choupana Mata Virgem"
+  description="Giras abertas de Umbanda em Lagoinha, Nova Iguaçu, aos sábados às 18h, de 15 em 15 dias. Atendimento gratuito com Caboclos, Pretos Velhos, Crianças e Exu."
+  breadcrumbs={[{ name: 'Giras', path: '/giras/' }]}
+  faq={faq}
+>
+  <PageHero
+    crumb="Giras"
+    eyebrow="Giras abertas"
+    titulo="Giras de Umbanda aos sábados, às 18h"
+    lead="De 15 em 15 dias, a Choupana abre as portas para o público. O atendimento é gratuito e qualquer pessoa pode vir, com respeito e roupa clara."
+    imagem={salao}
+    alt="Salão da Choupana à noite, preparado para a gira, com as velas acesas no congá"
+  />
+
+  <section class="pb-20 md:pb-28">
+    <div class="wrap">
+      <dl class="grid sm:grid-cols-2 lg:grid-cols-4 gap-px bg-linha rounded-3xl overflow-hidden ring-1 ring-linha">
+        <div class="bg-cal p-7"><dt class="eyebrow">Quando</dt><dd class="mt-2 font-display text-2xl">Sábados, de 15 em 15 dias</dd></div>
+        <div class="bg-cal p-7"><dt class="eyebrow">Horário</dt><dd class="mt-2 font-display text-2xl">A partir das 18h</dd></div>
+        <div class="bg-cal p-7"><dt class="eyebrow">Atendimento</dt><dd class="mt-2 font-display text-2xl">Gratuito</dd></div>
+        <div class="bg-cal p-7"><dt class="eyebrow">Onde</dt><dd class="mt-2 font-display text-2xl">R. Mercúrio, 70 – Lagoinha</dd></div>
+      </dl>
+      <p class="mt-5 text-tinta-suave">Datas podem mudar em feriados e festas. <a href={whatsappLink('Olá! Gostaria de confirmar a data da próxima gira aberta da Choupana.')} target="_blank" rel="noopener" data-evento="clique_whatsapp" data-local="giras_confirmar_data" class="text-anil font-semibold underline">Confirme a próxima gira no WhatsApp</a>.</p>
+    </div>
+  </section>
+
+  <section class="bg-areia/45 py-20 md:py-28">
+    <div class="wrap grid gap-12 lg:grid-cols-12">
+      <div class="lg:col-span-5">
+        <p class="eyebrow">O que é uma gira</p>
+        <h2 class="mt-3 text-4xl md:text-5xl text-anil-escuro">O encontro da corrente com quem precisa</h2>
+      </div>
+      <div class="lg:col-span-7 prose-casa text-lg text-tinta-suave">
+        <p class="!mt-0">A gira é o trabalho espiritual da Umbanda. Os médiuns da casa formam a corrente no terreiro, diante do congá, e com os pontos cantados chamam as entidades para trabalhar. O público fica na assistência e, na sua vez, é chamado para tomar passe e conversar com a entidade.</p>
+        <p>Na Choupana, as giras são conduzidas por {site.zelador.nome}, sob a regência do {site.regente}. Cada gira é dedicada a uma ou mais linhas, conforme o calendário da casa.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-20 md:py-28">
+    <div class="wrap">
+      <p class="eyebrow">Linhas que atendem</p>
+      <h2 class="mt-3 text-4xl md:text-5xl text-anil-escuro max-w-2xl">Caboclos, Pretos Velhos, Crianças e Exu</h2>
+      <div class="mt-12 grid gap-10 md:grid-cols-2">
+        <div class="prose-casa text-lg text-tinta-suave">
+          <h3 class="!mt-0 text-tinta">Caboclos</h3>
+          <p>Espíritos das matas, ligados a Oxóssi. Trazem força, firmeza e cura. O Caboclo Mata Virgem, regente da casa, pertence a essa linha.</p>
+          <h3 class="text-tinta">Pretos Velhos</h3>
+          <p>Sabedoria, paciência e humildade. Escutam, aconselham e benzem com a calma de quem já viveu muito.</p>
+        </div>
+        <div class="prose-casa text-lg text-tinta-suave">
+          <h3 class="!mt-0 text-tinta">Crianças</h3>
+          <p>A Ibejada traz alegria, pureza e leveza. Renova a esperança de quem chega cansado.</p>
+          <h3 class="text-tinta">Exu</h3>
+          <p>Guardiões dos caminhos e da casa. Trabalham na proteção, na ordem e na abertura de caminhos, a serviço da caridade.</p>
+        </div>
+      </div>
+      <figure class="mt-16">
+        <Image src={conga} alt="Congá da Choupana com velas acesas, o arco amarelo e os pontos riscados das entidades" widths={[640, 1024, 1600, 2000]} sizes="(min-width: 1216px) 1152px, 100vw" class="w-full rounded-3xl aspect-[16/9] object-cover" />
+      </figure>
+    </div>
+  </section>
+
+  <section class="bg-cal-2 py-20 md:py-28">
+    <div class="wrap grid gap-12 lg:grid-cols-12">
+      <div class="lg:col-span-5">
+        <p class="eyebrow">Doações</p>
+        <h2 class="mt-3 text-4xl md:text-5xl text-anil-escuro">Quer ajudar a casa?</h2>
+        <p class="mt-5 text-lg text-tinta-suave">A doação é sempre voluntária e não é condição para ser atendido. Estes são materiais usados nos trabalhos da casa:</p>
+      </div>
+      <ul class="lg:col-span-7 grid sm:grid-cols-2 gap-x-8 border-t border-linha">
+        {site.doacoes.map((d) => (
+          <li class="py-4 border-b border-linha flex items-center gap-3 text-lg"><span class="size-1.5 rounded-full bg-ocre-texto shrink-0" aria-hidden="true"></span>{d}</li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <Faq itens={faq} titulo="Dúvidas sobre as giras" />
+  <Chamada local="giras_chamada" />
+</Base>

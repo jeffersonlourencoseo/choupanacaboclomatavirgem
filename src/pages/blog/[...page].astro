@@ -1,0 +1,85 @@
+---
+import type { GetStaticPaths } from 'astro';
+import Base from '../../layouts/Base.astro';
+import PostCard from '../../components/PostCard.astro';
+import Chamada from '../../components/Chamada.astro';
+import { site } from '../../config/site';
+import { postsPublicados } from '../../lib/blog';
+
+export const getStaticPaths = (async ({ paginate }) => {
+  const posts = await postsPublicados();
+  return paginate(posts, { pageSize: 9 });
+}) satisfies GetStaticPaths;
+
+const { page } = Astro.props;
+const primeira = page.currentPage === 1;
+const [destaque, ...resto] = primeira ? page.data : [null, ...page.data];
+const titulo = primeira
+  ? 'Blog da Choupana | Umbanda, giras, entidades e ervas'
+  : `Blog da Choupana, página ${page.currentPage} | Umbanda em Nova Iguaçu`;
+const descricao = primeira
+  ? 'Textos da Choupana do Caboclo Mata Virgem sobre Umbanda de Raiz de Guiné: entidades, giras, ervas, datas festivas e notícias da casa em Nova Iguaçu (RJ).'
+  : `Página ${page.currentPage} do blog da Choupana do Caboclo Mata Virgem: textos sobre Umbanda, entidades, giras, ervas e notícias da casa em Nova Iguaçu.`;
+
+const schema = [
+  {
+    '@type': 'Blog',
+    '@id': `${site.url}/blog/#blog`,
+    name: 'Blog da Choupana do Caboclo Mata Virgem',
+    url: `${site.url}/blog/`,
+    inLanguage: 'pt-BR',
+    publisher: { '@id': `${site.url}/#templo` },
+    blogPost: page.data.map((p) => ({ '@type': 'BlogPosting', headline: p.data.titulo, url: `${site.url}/blog/${p.id}/`, datePublished: p.data.data.toISOString() })),
+  },
+];
+---
+<Base title={titulo} description={descricao} breadcrumbs={[{ name: 'Blog', path: '/blog/' }]} schema={schema}>
+  {page.url.prev && <link slot="head" rel="prev" href={page.url.prev} />}
+  {page.url.next && <link slot="head" rel="next" href={page.url.next} />}
+
+  <section class="pt-10 md:pt-16 pb-12 md:pb-16">
+    <div class="wrap">
+      <nav aria-label="Trilha" class="text-sm text-tinta-suave">
+        <ol class="flex flex-wrap items-center gap-2">
+          <li><a href="/" class="hover:text-anil">Início</a></li>
+          <li aria-hidden="true">/</li>
+          <li aria-current="page" class="text-tinta">Blog{!primeira && ` · página ${page.currentPage}`}</li>
+        </ol>
+      </nav>
+      <div class="mt-10 grid gap-6 lg:grid-cols-12 items-end">
+        <div class="lg:col-span-7">
+          <p class="eyebrow">Blog da Choupana</p>
+          <h1 class="mt-4 text-[2.6rem] sm:text-5xl md:text-6xl lg:text-[4.4rem] text-anil-escuro">Palavras da mata</h1>
+        </div>
+        <p class="lg:col-span-5 text-lg md:text-xl text-tinta-suave">Fundamentos da Umbanda, as entidades que trabalham na casa, ervas, datas festivas e as notícias da Choupana. Toda semana, um texto novo.</p>
+      </div>
+      <span class="risco mt-12" aria-hidden="true"></span>
+    </div>
+  </section>
+
+  <section class="pb-20 md:pb-28">
+    <div class="wrap">
+      {page.total === 0 && <p class="text-lg text-tinta-suave">Os primeiros textos estão chegando. Volte em breve!</p>}
+
+      {destaque && (
+        <div class="mb-16 md:mb-20"><PostCard post={destaque} destaque eager /></div>
+      )}
+
+      {resto.length > 0 && (
+        <div class="grid gap-x-8 gap-y-14 sm:grid-cols-2 lg:grid-cols-3">
+          {resto.map((p) => p && <PostCard post={p} />)}
+        </div>
+      )}
+
+      {page.lastPage > 1 && (
+        <nav aria-label="Paginação" class="mt-20 flex items-center justify-between border-t border-linha pt-6">
+          {page.url.prev ? <a href={page.url.prev} class="btn btn-linha text-anil-escuro">← Mais recentes</a> : <span></span>}
+          <span class="text-sm text-tinta-suave">Página {page.currentPage} de {page.lastPage}</span>
+          {page.url.next ? <a href={page.url.next} class="btn btn-linha text-anil-escuro">Mais antigos →</a> : <span></span>}
+        </nav>
+      )}
+    </div>
+  </section>
+
+  <Chamada local="blog_lista_chamada" />
+</Base>

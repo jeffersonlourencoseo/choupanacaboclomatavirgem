@@ -1,0 +1,78 @@
+---
+import { Image } from 'astro:assets';
+import Base from '../layouts/Base.astro';
+import PageHero from '../components/PageHero.astro';
+import Chamada from '../components/Chamada.astro';
+import { site } from '../config/site';
+import fachada from '../assets/fotos/fachada-ponto.jpg';
+import conga from '../assets/fotos/foto-3.jpg';
+import quadros from '../assets/fotos/foto-2.jpg';
+import entrada from '../assets/fotos/foto-5.jpg';
+---
+<Base
+  title="A casa | Choupana do Caboclo Mata Virgem, Nova Iguaçu"
+  description="Conheça a Choupana do Caboclo Mata Virgem: templo de Umbanda de Raiz de Guiné em Lagoinha, Nova Iguaçu, zelado por Pai Jorge Miguel. Uma casa de caridade."
+  breadcrumbs={[{ name: 'A casa', path: '/a-casa/' }]}
+>
+  <PageHero
+    crumb="A casa"
+    eyebrow="Quem somos"
+    titulo="Uma casa de Umbanda feita de caridade"
+    lead={`A Choupana do Caboclo Mata Virgem é um templo de ${site.vertente} em Lagoinha, Nova Iguaçu, regido pelo ${site.regente} e zelado por ${site.zelador.nome}.`}
+    imagem={fachada}
+    alt="Parede externa da Choupana com o ponto riscado em azul e o nome da casa"
+  />
+
+  <section class="pb-20 md:pb-28">
+    <div class="wrap grid gap-12 lg:grid-cols-12">
+      <aside class="lg:col-span-4 order-2 lg:order-1">
+        <div class="lg:sticky lg:top-28 space-y-6">
+          <dl class="rounded-3xl bg-cal-2 ring-1 ring-linha p-7 space-y-5">
+            <div><dt class="eyebrow">Regente</dt><dd class="mt-1 font-display text-xl">{site.regente}</dd></div>
+            <div><dt class="eyebrow">Zelador</dt><dd class="mt-1 font-display text-xl">{site.zelador.nome}</dd></div>
+            <div><dt class="eyebrow">Vertente</dt><dd class="mt-1 font-display text-xl">{site.vertente}</dd></div>
+            <div><dt class="eyebrow">Filiação</dt><dd class="mt-1 font-display text-xl"><a href={site.filiacao.instagram} target="_blank" rel="noopener" class="hover:text-anil">{site.filiacao.nome}</a></dd></div>
+            <div><dt class="eyebrow">Giras abertas</dt><dd class="mt-1 font-display text-xl">Sábados, 18h, de 15 em 15 dias</dd></div>
+          </dl>
+          <Image src={quadros} alt="Parede do salão com quadros de Jesus e de guias espirituais" widths={[400, 700]} sizes="(min-width: 1024px) 360px, 100vw" class="w-full rounded-3xl aspect-[3/4] object-cover" />
+        </div>
+      </aside>
+
+      <article class="lg:col-span-8 order-1 lg:order-2 prose-casa text-lg text-tinta-suave max-w-3xl">
+        <h2 class="!mt-0">O nome da casa</h2>
+        <p>Nos pontos cantados de Umbanda, o caboclo vem da mata virgem e tem sua choupana na Jurema. A choupana é a morada simples do caboclo na floresta, um lugar de abrigo, de cura e de acolhimento. É esse o sentido que o nome carrega: uma morada aberta a quem precisa.</p>
+        <p>O <strong class="text-tinta">{site.regente}</strong> é o guia que rege a Choupana. Caboclo da linha de Oxóssi, ele traz a força das matas, a firmeza e o conhecimento das ervas, e orienta os trabalhos da casa.</p>
+
+        <h2>Quem zela pela casa</h2>
+        <p>A Choupana é zelada por <strong class="text-tinta">{site.zelador.nome}</strong>. É ele quem conduz as giras, cuida da corrente de médiuns e recebe cada pessoa que chega. Como contou uma frequentadora no Google, é “um zelador que cuida de nós com muito amor e respeito”.</p>
+
+        <figure class="!my-12">
+          <Image src={conga} alt="Congá da Choupana à luz do dia, com o arco amarelo, a cruz e o altar coberto de branco sobre o chão de areia" widths={[640, 1024, 1400]} sizes="(min-width: 1024px) 760px, 100vw" class="w-full rounded-3xl" />
+          <figcaption class="mt-3 text-sm">O congá, coração da casa, sobre o chão de areia do terreiro.</figcaption>
+        </figure>
+
+        <h2>Umbanda de Raiz de Guiné</h2>
+        <p>A Choupana segue a {site.vertente} e é filiada ao <a href={site.filiacao.instagram} target="_blank" rel="noopener">{site.filiacao.nome}</a>. A casa preserva os fundamentos dessa raiz no congá, nos pontos riscados e na forma de conduzir as giras, sempre com disciplina, estudo e respeito à tradição.</p>
+
+        <h2>Caridade em primeiro lugar</h2>
+        <p>Na Choupana, ninguém paga para ser atendido. As giras abertas recebem o público com passes e consultas gratuitas com as entidades. Quem quiser ajudar pode doar, de forma voluntária, materiais usados nos trabalhos.</p>
+        <ul>
+          <li>Atendimento gratuito em todas as giras abertas</li>
+          <li>Trabalhos com Caboclos, Pretos Velhos, Crianças e Exu</li>
+          <li>Espaço acolhedor para todas as pessoas, inclusive a comunidade LGBTQIA+</li>
+          <li>Entrada, assentos e banheiro acessíveis</li>
+        </ul>
+
+        <figure class="!my-12">
+          <Image src={entrada} alt="Entrada do salão da Choupana com porta de vidro e plantas no quintal" widths={[640, 1024, 1400]} sizes="(min-width: 1024px) 760px, 100vw" class="w-full rounded-3xl aspect-[4/3] object-cover" />
+          <figcaption class="mt-3 text-sm">A entrada do salão, entre as plantas do quintal.</figcaption>
+        </figure>
+
+        <h2>Venha conhecer</h2>
+        <p>Se é sua primeira vez, leia o <a href="/primeira-visita/">guia da primeira visita</a> ou faça o <a href="/tour-virtual/">tour virtual em 360°</a> para conhecer o espaço. Depois, é só chamar no WhatsApp para confirmar a data da próxima gira.</p>
+      </article>
+    </div>
+  </section>
+
+  <Chamada local="a_casa_chamada" />
+</Base>

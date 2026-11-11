@@ -1,0 +1,90 @@
+---
+import { Image } from 'astro:assets';
+import logo from '../assets/logo.png';
+import { site, nav, whatsappLink } from '../config/site';
+
+interface Props { overHero?: boolean }
+const { overHero = false } = Astro.props;
+const path = Astro.url.pathname;
+---
+<header
+  class:list={[
+    'z-50 w-full',
+    overHero ? 'absolute top-0 left-0 text-white' : 'sticky top-0 bg-cal/92 backdrop-blur-md border-b border-linha text-tinta',
+  ]}
+  data-header
+>
+  <div class="wrap flex items-center justify-between gap-4 h-[4.5rem] md:h-20">
+    <a href="/" class="flex items-center gap-3 shrink-0 no-underline" title="Página inicial">
+      <span class="grid place-items-center size-11 md:size-12 rounded-full bg-white shadow-sm ring-1 ring-black/5">
+        <Image src={logo} alt="" width={96} height={96} class="size-10 md:size-11" loading="eager" />
+      </span>
+      <span class="leading-tight">
+        <span class="block font-display text-[1.02rem] md:text-[1.12rem] font-medium">Choupana do Caboclo</span>
+        <span class="block text-[0.7rem] tracking-[0.18em] uppercase opacity-80">Mata Virgem</span>
+      </span>
+    </a>
+
+    <nav aria-label="Principal" class="hidden lg:block">
+      <ul class="flex items-center gap-1">
+        {nav.map((item) => (
+          <li>
+            <a
+              href={item.href}
+              aria-current={path.startsWith(item.href) ? 'page' : undefined}
+              class:list={[
+                'px-3.5 py-2 rounded-full text-[0.95rem] font-medium no-underline transition-colors',
+                overHero ? 'hover:bg-white/12' : 'hover:bg-cal-2',
+                path.startsWith(item.href) && (overHero ? 'bg-white/14' : 'bg-cal-2 text-anil-escuro'),
+              ]}
+            >{item.label}</a>
+          </li>
+        ))}
+      </ul>
+    </nav>
+
+    <div class="flex items-center gap-2">
+      <a
+        href={whatsappLink()}
+        target="_blank" rel="noopener"
+        data-evento="clique_whatsapp" data-local="cabecalho"
+        class="btn btn-ocre hidden sm:inline-flex !min-h-11 !py-2 !px-5 text-[0.95rem]"
+      >Falar no WhatsApp</a>
+
+      <button
+        type="button"
+        class:list={['lg:hidden grid place-items-center size-11 rounded-full', overHero ? 'bg-white/10 hover:bg-white/20' : 'bg-cal-2 hover:bg-areia/60']}
+        aria-expanded="false" aria-controls="menu-movel" data-menu-btn
+      >
+        <span class="sr-only">Abrir menu</span>
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true" data-icon-open><path d="M4 7h16M4 12h16M4 17h10"/></svg>
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true" class="hidden" data-icon-close><path d="M6 6l12 12M18 6L6 18"/></svg>
+      </button>
+    </div>
+  </div>
+
+  <div id="menu-movel" class="lg:hidden hidden bg-noite text-white border-t border-white/10" data-menu>
+    <nav aria-label="Menu" class="wrap py-4">
+      <ul class="flex flex-col">
+        <li><a href="/" class="block py-3.5 text-lg font-display border-b border-white/10 no-underline">Início</a></li>
+        {nav.map((item) => (
+          <li><a href={item.href} class="block py-3.5 text-lg font-display border-b border-white/10 no-underline" aria-current={path.startsWith(item.href) ? 'page' : undefined}>{item.label}</a></li>
+        ))}
+      </ul>
+      <a href={whatsappLink()} target="_blank" rel="noopener" data-evento="clique_whatsapp" data-local="menu_movel" class="btn btn-ocre w-full mt-5">Falar no WhatsApp</a>
+    </nav>
+  </div>
+</header>
+
+<script>
+  const btn = document.querySelector<HTMLButtonElement>('[data-menu-btn]');
+  const menu = document.querySelector<HTMLElement>('[data-menu]');
+  btn?.addEventListener('click', () => {
+    const open = btn.getAttribute('aria-expanded') === 'true';
+    btn.setAttribute('aria-expanded', String(!open));
+    menu?.classList.toggle('hidden', open);
+    btn.querySelector('[data-icon-open]')?.classList.toggle('hidden', !open);
+    btn.querySelector('[data-icon-close]')?.classList.toggle('hidden', open);
+    btn.querySelector('.sr-only')!.textContent = open ? 'Abrir menu' : 'Fechar menu';
+  });
+</script>

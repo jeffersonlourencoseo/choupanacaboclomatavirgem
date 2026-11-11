@@ -1,0 +1,36 @@
+---
+import { site } from '../config/site';
+interface Props { local: string }
+const { local } = Astro.props;
+---
+<div class="rounded-3xl overflow-hidden ring-1 ring-linha bg-cal-2">
+  <div class="relative aspect-[4/3] md:aspect-[16/10] bg-areia/40" data-mapa>
+    <div class="absolute inset-0 grid place-items-center p-6 text-center" data-mapa-capa>
+      <div>
+        <svg class="mx-auto text-anil" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21Z"/><circle cx="12" cy="9.5" r="2.6"/></svg>
+        <p class="mt-3 font-display text-2xl">{site.endereco.rua}</p>
+        <p class="text-tinta-suave">{site.endereco.bairro}, {site.endereco.cidade} – {site.endereco.uf}</p>
+        <button type="button" class="btn btn-anil mt-5" data-mapa-btn>Mostrar mapa</button>
+        <p class="mt-3 text-xs text-tinta-suave">O mapa é carregado do Google Maps.</p>
+      </div>
+    </div>
+  </div>
+  <div class="flex flex-wrap gap-2 p-4 md:p-5 border-t border-linha">
+    <a href={site.rotaUrl} target="_blank" rel="noopener" data-evento="clique_rota" data-local={local} class="btn btn-anil !min-h-11 !py-2">Traçar rota</a>
+    <a href={site.mapsUrl} target="_blank" rel="noopener" class="btn btn-linha !min-h-11 !py-2 text-anil-escuro">Abrir no Google Maps</a>
+  </div>
+</div>
+
+<script define:vars={{ src: site.mapsEmbed }}>
+  document.querySelectorAll('[data-mapa-btn]').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var box = btn.closest('[data-mapa]');
+      var f = document.createElement('iframe');
+      f.src = src; f.title = 'Mapa com a localização da Choupana do Caboclo Mata Virgem';
+      f.loading = 'lazy'; f.referrerPolicy = 'no-referrer-when-downgrade';
+      f.className = 'absolute inset-0 size-full border-0';
+      box.querySelector('[data-mapa-capa]').remove();
+      box.appendChild(f);
+    });
+  });
+</script>

@@ -1,0 +1,157 @@
+---
+import { Image } from 'astro:assets';
+import poster from '../assets/fotos/conga-noite.jpg';
+import { cenas } from '../data/tour';
+
+interface Props { autoStart?: boolean; headingLevel?: 'h2' | 'h3' }
+const { autoStart = false } = Astro.props;
+---
+<div class="tour" data-tour data-autostart={autoStart ? '1' : '0'}>
+  <div class="relative overflow-hidden rounded-2xl md:rounded-3xl bg-noite aspect-[4/5] sm:aspect-[16/10] lg:aspect-[16/9] shadow-[0_30px_60px_-30px_rgb(14_16_48/.6)]">
+    <div class="absolute inset-0" data-viewer id="tour-viewer" role="application" aria-label="Visualizador 360 graus. Arraste para olhar ao redor."></div>
+
+    <div class="absolute inset-0 grid place-items-center" data-poster>
+      <Image src={poster} alt="Congá da Choupana iluminado por velas, visto do terreiro" widths={[640, 1024, 1600]} sizes="(min-width: 1216px) 1152px, 100vw" class="absolute inset-0 size-full object-cover" />
+      <div class="absolute inset-0 bg-gradient-to-t from-noite/85 via-noite/30 to-noite/10"></div>
+      <div class="relative text-center text-white px-6">
+        <p class="eyebrow !text-ocre">Tour virtual 360°</p>
+        <p class="font-display text-3xl md:text-5xl mt-3 max-w-xl mx-auto">Conheça a casa antes da sua primeira gira</p>
+        <button type="button" class="btn btn-ocre mt-7" data-start>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.6 3.8 5.6 3.8 9s-1.3 6.4-3.8 9c-2.5-2.6-3.8-5.6-3.8-9S9.5 5.6 12 3Z"/></svg>
+          Entrar no tour
+        </button>
+        <p class="mt-4 text-sm text-white/70">Arraste para olhar ao redor · 12 ambientes, de dia e à noite</p>
+      </div>
+    </div>
+
+    <p class="absolute left-3 bottom-3 max-w-[calc(100%-1.5rem)] md:left-5 md:bottom-5 md:max-w-xl rounded-xl bg-noite/75 backdrop-blur-sm px-3.5 py-2 text-white text-sm md:text-[0.95rem] pointer-events-none hidden" data-caption aria-live="polite"></p>
+  </div>
+
+  <div class="mt-5 flex flex-col gap-4">
+    <div class="flex items-center gap-3">
+      <div class="inline-flex p-1 rounded-full bg-cal-2 ring-1 ring-linha" role="group" aria-label="Período">
+        <button type="button" class="periodo px-4 py-2 rounded-full text-sm font-semibold" data-periodo="noite" aria-pressed="true">À noite</button>
+        <button type="button" class="periodo px-4 py-2 rounded-full text-sm font-semibold" data-periodo="dia" aria-pressed="false">De dia</button>
+      </div>
+      <span class="text-sm text-tinta-suave hidden sm:inline">Escolha o ambiente:</span>
+    </div>
+    <ul class="flex gap-3 overflow-x-auto pb-2 -mx-1 px-1 snap-x" data-cenas>
+      {cenas.map((c) => (
+        <li class="snap-start shrink-0" data-periodo-item={c.periodo} hidden={c.periodo !== 'noite'}>
+          <button type="button" data-cena={c.id} data-legenda={`${c.titulo}. ${c.legenda}`} class="cena group block w-36 md:w-44 text-left" aria-pressed="false">
+            <span class="block overflow-hidden rounded-xl ring-2 ring-transparent group-aria-pressed:ring-anil transition">
+              <img src={`/tour/${c.id}-thumb.webp`} alt="" width="360" height="225" loading={c.periodo === 'noite' ? 'eager' : 'lazy'} decoding="async" class="aspect-[8/5] w-full object-cover group-hover:scale-[1.03] transition-transform" />
+            </span>
+            <span class="mt-2 block text-sm font-semibold group-aria-pressed:text-anil">{c.titulo}</span>
+          </button>
+        </li>
+      ))}
+    </ul>
+  </div>
+</div>
+
+<style>
+  .periodo[aria-pressed='true'] { background: var(--color-anil); color: #fff; }
+</style>
+
+<script>
+  import { cenas } from '../data/tour';
+
+  declare global { interface Window { pannellum?: any } }
+
+  function loadPannellum(): Promise<any> {
+    if (window.pannellum) return Promise.resolve(window.pannellum);
+    return new Promise((resolve, reject) => {
+      const css = document.createElement('link');
+      css.rel = 'stylesheet'; css.href = '/vendor/pannellum.css';
+      document.head.appendChild(css);
+      const s = document.createElement('script');
+      s.src = '/vendor/pannellum.js'; s.async = true;
+      s.onload = () => resolve(window.pannellum); s.onerror = reject;
+      document.head.appendChild(s);
+    });
+  }
+
+  document.querySelectorAll<HTMLElement>('[data-tour]').forEach((root) => {
+    const viewerEl = root.querySelector<HTMLElement>('[data-viewer]')!;
+    const poster = root.querySelector<HTMLElement>('[data-poster]')!;
+    const caption = root.querySelector<HTMLElement>('[data-caption]')!;
+    const cenaBtns = [...root.querySelectorAll<HTMLButtonElement>('[data-cena]')];
+    const periodoBtns = [...root.querySelectorAll<HTMLButtonElement>('[data-periodo]')];
+    const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+    let viewer: any = null;
+    let starting = false;
+
+    const marcar = (id: string) => {
+      cenaBtns.forEach((b) => b.setAttribute('aria-pressed', String(b.dataset.cena === id)));
+      const btn = cenaBtns.find((b) => b.dataset.cena === id);
+      if (btn) { caption.textContent = btn.dataset.legenda || ''; caption.hidden = false; caption.classList.remove('hidden'); }
+    };
+
+    const start = async (first = 'noite-conga') => {
+      if (viewer) { viewer.loadScene(first); return; }
+      if (starting) return;
+      starting = true;
+      const pn = await loadPannellum();
+      const scenes: Record<string, unknown> = {};
+      cenas.forEach((c) => {
+        scenes[c.id] = { type: 'equirectangular', panorama: `/tour/${c.id}.jpg`, hfov: 100, pitch: -4, yaw: 0 };
+      });
+      viewer = pn.viewer(viewerEl, {
+        default: {
+          firstScene: first,
+          sceneFadeDuration: 700,
+          autoLoad: true,
+          autoRotate: reduce ? 0 : -1.5,
+          autoRotateInactivityDelay: 6000,
+          showFullscreenCtrl: true,
+          showZoomCtrl: true,
+          compass: false,
+          minHfov: 50,
+          maxHfov: 115,
+          strings: {
+            loadingLabel: 'Carregando…',
+            bylineLabel: '',
+            noPanoramaError: 'Imagem não encontrada.',
+            fileAccessError: 'Não foi possível abrir a imagem.',
+            genericWebGLError: 'Seu navegador não conseguiu abrir o tour 360°.',
+            unknownError: 'Erro ao carregar o tour.',
+            loadButtonLabel: 'Carregar',
+          },
+        },
+        scenes,
+      });
+      viewer.on('scenechange', (id: string) => {
+        marcar(id);
+        if (typeof (window as any).gtag === 'function') (window as any).gtag('event', 'tour_cena', { cena: id });
+      });
+      poster.classList.add('opacity-0', 'pointer-events-none');
+      poster.style.transition = 'opacity .6s';
+      setTimeout(() => poster.remove(), 700);
+      marcar(first);
+    };
+
+    root.querySelector('[data-start]')?.addEventListener('click', () => start());
+    cenaBtns.forEach((b) => b.addEventListener('click', () => start(b.dataset.cena)));
+    periodoBtns.forEach((b) =>
+      b.addEventListener('click', () => {
+        const p = b.dataset.periodo!;
+        periodoBtns.forEach((x) => x.setAttribute('aria-pressed', String(x === b)));
+        root.querySelectorAll<HTMLElement>('[data-periodo-item]').forEach((li) => (li.hidden = li.dataset.periodoItem !== p));
+        if (viewer) {
+          const primeira = cenas.find((c) => c.periodo === p)!.id;
+          viewer.loadScene(primeira);
+        }
+      }),
+    );
+
+    // Abre sozinho só em telas grandes e sem economia de dados; no celular, com um toque.
+    const economia = (navigator as any).connection?.saveData === true;
+    if (root.dataset.autostart === '1' && matchMedia('(min-width: 1024px)').matches && !economia) {
+      const io = new IntersectionObserver((entries) => {
+        if (entries.some((e) => e.isIntersecting)) { io.disconnect(); start(); }
+      }, { rootMargin: '200px' });
+      io.observe(root);
+    }
+  });
+</script>

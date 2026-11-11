@@ -1,0 +1,131 @@
+@import "tailwindcss";
+@import "@fontsource-variable/fraunces/index.css";
+@import "@fontsource-variable/hanken-grotesk/index.css";
+
+/* Paleta tirada da própria casa:
+   cal (paredes), areia (chão do congá), anil (ponto riscado da logo),
+   ocre (arco do congá), noite (giras à luz de vela). */
+@theme {
+  --color-cal: #f8f5ef;
+  --color-cal-2: #efe9de;
+  --color-areia: #e3d3b2;
+  --color-areia-escura: #b99d6b;
+  --color-anil: #2329a8;
+  --color-anil-escuro: #171b6e;
+  --color-noite: #0e1030;
+  --color-ocre: #e4a62a;
+  --color-ocre-texto: #8a5d06;
+  --color-tinta: #1d1b24;
+  --color-tinta-suave: #4a4757;
+  --color-linha: #d9d0bf;
+
+  --font-display: "Fraunces Variable", "Iowan Old Style", Georgia, serif;
+  --font-sans: "Hanken Grotesk Variable", system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    *, *::before, *::after { animation: none !important; transition: none !important; }
+  }
+  body {
+    background: var(--color-cal);
+    color: var(--color-tinta);
+    font-family: var(--font-sans);
+    font-size: 1.0625rem;
+    line-height: 1.65;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+  }
+  h1, h2, h3 {
+    font-family: var(--font-display);
+    font-optical-sizing: auto;
+    font-weight: 420;
+    line-height: 1.08;
+    letter-spacing: -0.015em;
+    text-wrap: balance;
+  }
+  ::selection { background: var(--color-ocre); color: var(--color-noite); }
+  :focus-visible {
+    outline: 2px solid var(--color-ocre);
+    outline-offset: 3px;
+    border-radius: 4px;
+  }
+  a { text-underline-offset: 0.2em; }
+}
+
+@layer components {
+  .wrap { width: 100%; max-width: 76rem; margin-inline: auto; padding-inline: 1.25rem; }
+  @media (min-width: 768px) { .wrap { padding-inline: 2rem; } }
+
+  .eyebrow {
+    font-family: var(--font-sans);
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--color-ocre-texto);
+  }
+  .on-dark .eyebrow { color: var(--color-ocre); }
+
+  .btn {
+    display: inline-flex; align-items: center; justify-content: center; gap: 0.6rem;
+    min-height: 3rem; padding: 0.8rem 1.4rem;
+    border-radius: 999px;
+    font-weight: 600; font-size: 1rem; line-height: 1.1;
+    transition: background-color .2s, color .2s, border-color .2s, transform .2s;
+    text-decoration: none;
+  }
+  .btn:active { transform: translateY(1px); }
+  .btn-ocre { background: var(--color-ocre); color: var(--color-noite); }
+  .btn-ocre:hover { background: #f0b843; }
+  .btn-anil { background: var(--color-anil); color: #fff; }
+  .btn-anil:hover { background: var(--color-anil-escuro); }
+  .btn-linha { border: 1.5px solid currentColor; }
+  .btn-linha:hover { background: color-mix(in srgb, currentColor 10%, transparent); }
+
+  .prose-casa > * + * { margin-top: 1.1em; }
+  .prose-casa h2 { font-size: clamp(1.7rem, 3vw, 2.3rem); margin-top: 2.2em; color: var(--color-anil-escuro); }
+  .prose-casa h3 { font-size: clamp(1.5rem, 2.2vw, 1.85rem); margin-top: 1.6em; color: var(--color-tinta); }
+  .prose-casa ul { list-style: none; padding: 0; }
+  .prose-casa ul li { position: relative; padding-left: 1.4rem; }
+  .prose-casa ul li + li { margin-top: .45em; }
+  .prose-casa ul li::before {
+    content: ""; position: absolute; left: 0; top: .72em;
+    width: .55rem; height: 1.5px; background: var(--color-ocre-texto);
+  }
+  .prose-casa a { color: var(--color-anil); text-decoration: underline; }
+
+  /* Texto dos posts do blog (Markdown) */
+  .prose-post { line-height: 1.75; }
+  .prose-post h2, .prose-post h3 { scroll-margin-top: 6.5rem; }
+  .prose-post strong { color: var(--color-tinta); font-weight: 600; }
+  .prose-post ol { list-style: decimal; padding-left: 1.4rem; }
+  .prose-post ol li + li { margin-top: .45em; }
+  .prose-post ol li::marker { color: var(--color-ocre-texto); font-weight: 600; }
+  .prose-post blockquote {
+    margin-block: 2em; padding: .2em 0 .2em 1.4rem;
+    border-left: 3px solid var(--color-ocre);
+    font-family: var(--font-display); font-size: 1.35em; line-height: 1.4; color: var(--color-anil-escuro);
+  }
+  .prose-post img { border-radius: 1.25rem; width: 100%; height: auto; margin-block: 2em; }
+  .prose-post hr { border: 0; height: 1px; background: var(--color-linha); margin-block: 2.5em; }
+  .prose-post table { width: 100%; border-collapse: collapse; font-size: .95em; }
+  .prose-post th, .prose-post td { border-bottom: 1px solid var(--color-linha); padding: .6em .4em; text-align: left; }
+
+  /* Fio fino em anil, lembrando o traço do ponto riscado */
+  .risco {
+    display: block; height: 1px; width: 100%;
+    background: linear-gradient(90deg, var(--color-anil) 0 3.5rem, var(--color-linha) 3.5rem);
+  }
+  .on-dark .risco { background: linear-gradient(90deg, var(--color-ocre) 0 3.5rem, rgb(255 255 255 / .18) 3.5rem); }
+}
+
+/* Pannellum: ajustes visuais */
+.pnlm-container { background: var(--color-noite) !important; font-family: var(--font-sans) !important; }
+.pnlm-load-box { background-color: rgb(14 16 48 / .85) !important; border-radius: 14px !important; }
+.pnlm-controls { border-radius: 10px !important; border: 0 !important; box-shadow: 0 2px 10px rgb(0 0 0 / .25); }
