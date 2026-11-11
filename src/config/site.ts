@@ -9,10 +9,11 @@ export const site = {
   tipo: 'Templo de Umbanda',
   vertente: 'Umbanda de Raiz de Guiné',
   regente: 'Caboclo Mata Virgem',
-  zelador: {
-    nome: 'Pai Jorge Miguel',
+  // Fonte: a casa (11/11/2026). "Abayratan" é o nome do mestre; sempre com aspas.
+  mestre: {
+    nome: 'Mestre “Abayratan” Jorge Miguel',
     nomeCompleto: 'Jorge Miguel',
-    funcao: 'Zelador da casa',
+    funcao: 'Mestre da casa',
   },
   // Fonte: bio do Instagram ("Casa filiada a @tfluz.pe") e resumo do Google.
   filiacao: {
@@ -42,7 +43,8 @@ export const site = {
   telefone: '(21) 97126-4678',
   telefoneE164: '+5521971264678',
   whatsapp: '5521971264678',
-  whatsappMsg: 'Olá! Vim pelo site da Choupana do Caboclo Mata Virgem e gostaria de saber mais sobre as giras.',
+  // Fonte: a casa (11/11/2026). Mensagem única de todos os botões e links de WhatsApp.
+  whatsappMsg: 'Olá, vim através do site e gostaria de mais informações!',
 
   // Fonte: a casa (11/11/2026). Datas completas em src/data/giras.ts.
   giras: {
@@ -89,8 +91,8 @@ export const site = {
   ga4Id: '',
 } as const;
 
-export const whatsappLink = (msg: string = site.whatsappMsg) =>
-  `https://wa.me/${site.whatsapp}?text=${encodeURIComponent(msg)}`;
+export const whatsappLink = () =>
+  `https://wa.me/${site.whatsapp}?text=${encodeURIComponent(site.whatsappMsg)}`;
 
 export const enderecoLinha = `${site.endereco.rua} – ${site.endereco.bairro}, ${site.endereco.cidade} – ${site.endereco.uf}, ${site.endereco.cep}`;
 
