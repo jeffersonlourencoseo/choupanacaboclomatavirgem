@@ -13,7 +13,7 @@ import conga from '../assets/fotos/conga-noite-detalhe.jpg';
 
 const faq = [
   {
-    q: 'Qual o dia e o horário da gira aberta?',
+    q: 'Qual é o dia e o horário da gira aberta?',
     a: `As giras abertas da Choupana acontecem de 14 em 14 dias, a partir das 18h. O calendário completo está nesta página, com a próxima gira em destaque. Em 2027, as giras são sempre aos sábados.`,
   },
   {
@@ -26,7 +26,7 @@ const faq = [
   },
   {
     q: 'Posso levar alguma doação?',
-    a: 'Pode, se quiser. Doação é sempre opcional. A casa usa nos trabalhos materiais como velas brancas, defumadores, charutos e fumo de cachimbo. Pergunte pelo WhatsApp o que está faltando no momento.',
+    a: 'Pode, se quiser. Doação é sempre opcional. A casa usa nos trabalhos velas palito brancas, velas de 7 dias brancas, cachaça, cidra, álcool, fumo para cachimbo, charutos e defumadores. Pergunte pelo WhatsApp o que está faltando no momento.',
   },
   {
     q: 'Posso levar crianças?',
@@ -74,7 +74,7 @@ const eventos = proximas().map((d) => ({
         <div class="bg-cal p-7"><dt class="eyebrow">Atendimento</dt><dd class="mt-2 font-display text-2xl">Gratuito</dd></div>
         <div class="bg-cal p-7"><dt class="eyebrow">Onde</dt><dd class="mt-2 font-display text-2xl">R. Mercúrio, 70 – Lagoinha</dd></div>
       </dl>
-      <p class="mt-5 text-tinta-suave"><a href="#calendario" class="text-anil font-semibold underline">Ver todas as datas</a> · <a href={whatsappLink('Olá! Gostaria de confirmar a data da próxima gira aberta da Choupana.')} target="_blank" rel="noopener" data-evento="clique_whatsapp" data-local="giras_confirmar_data" class="text-anil font-semibold underline">Confirmar no WhatsApp</a></p>
+      <p class="mt-5 text-tinta-suave"><a href="#calendario" class="text-anil font-semibold underline">Ver todas as datas</a> · <a href={whatsappLink()} target="_blank" rel="noopener" data-evento="clique_whatsapp" data-local="giras_confirmar_data" class="text-anil font-semibold underline">Confirmar no WhatsApp</a></p>
     </div>
   </section>
 
@@ -88,7 +88,7 @@ const eventos = proximas().map((d) => ({
       </div>
       <div class="lg:col-span-7 prose-casa text-lg text-tinta-suave">
         <p class="!mt-0">A gira é o trabalho espiritual da Umbanda. Os médiuns da casa formam a corrente no terreiro, diante do congá, e com os pontos cantados chamam as entidades para trabalhar. O público fica na assistência e, na sua vez, é chamado para tomar passe e conversar com a entidade.</p>
-        <p>Na Choupana, as giras são conduzidas por {site.zelador.nome}, sob a regência do {site.regente}. Cada gira é dedicada a uma ou mais linhas, conforme o calendário da casa.</p>
+        <p>Na Choupana, as giras são conduzidas pelo {site.mestre.nome}, sob a regência do {site.regente}. Cada gira é dedicada a uma ou mais linhas, conforme o calendário da casa.</p>
       </div>
     </div>
   </section>
@@ -106,7 +106,7 @@ const eventos = proximas().map((d) => ({
         </div>
         <div class="prose-casa text-lg text-tinta-suave">
           <h3 class="!mt-0 text-tinta">Crianças</h3>
-          <p>A Ibejada traz alegria, pureza e leveza. Renova a esperança de quem chega cansado.</p>
+          <p>Yori traz alegria, pureza e leveza. Renova a esperança de quem chega cansado.</p>
           <h3 class="text-tinta">Exu</h3>
           <p>Guardiões dos caminhos e da casa. Trabalham na proteção, na ordem e na abertura de caminhos, a serviço da caridade.</p>
         </div>

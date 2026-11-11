@@ -11,14 +11,14 @@ import entrada from '../assets/fotos/foto-5.jpg';
 ---
 <Base
   title="A casa | Choupana do Caboclo Mata Virgem, Nova Iguaçu"
-  description="Conheça a Choupana do Caboclo Mata Virgem: templo de Umbanda de Raiz de Guiné em Lagoinha, Nova Iguaçu, zelado por Pai Jorge Miguel. Uma casa de caridade."
+  description="Conheça a Choupana do Caboclo Mata Virgem: templo de Umbanda de Raiz de Guiné em Lagoinha, Nova Iguaçu, conduzido pelo Mestre “Abayratan” Jorge Miguel."
   breadcrumbs={[{ name: 'A casa', path: '/a-casa/' }]}
 >
   <PageHero
     crumb="A casa"
     eyebrow="Quem somos"
     titulo="Uma casa de Umbanda feita de caridade"
-    lead={`A Choupana do Caboclo Mata Virgem é um templo de ${site.vertente} em Lagoinha, Nova Iguaçu, regido pelo ${site.regente} e zelado por ${site.zelador.nome}.`}
+    lead={`A Choupana do Caboclo Mata Virgem é um templo de ${site.vertente} em Lagoinha, Nova Iguaçu, regido pelo ${site.regente} e conduzido pelo ${site.mestre.nome}.`}
     imagem={fachada}
     alt="Fachada da Choupana do Caboclo Mata Virgem com o ponto riscado, as letras T.U.O e a frase Seja bem-vindo, entre plantas"
   />
@@ -29,7 +29,7 @@ import entrada from '../assets/fotos/foto-5.jpg';
         <div class="lg:sticky lg:top-28 space-y-6">
           <dl class="rounded-3xl bg-cal-2 ring-1 ring-linha p-7 space-y-5">
             <div><dt class="eyebrow">Regente</dt><dd class="mt-1 font-display text-xl">{site.regente}</dd></div>
-            <div><dt class="eyebrow">Zelador</dt><dd class="mt-1 font-display text-xl">{site.zelador.nome}</dd></div>
+            <div><dt class="eyebrow">Mestre da casa</dt><dd class="mt-1 font-display text-xl">{site.mestre.nome}</dd></div>
             <div><dt class="eyebrow">Vertente</dt><dd class="mt-1 font-display text-xl">{site.vertente}</dd></div>
             <div><dt class="eyebrow">Filiação</dt><dd class="mt-1 font-display text-xl"><a href={site.filiacao.instagram} target="_blank" rel="noopener" class="hover:text-anil">{site.filiacao.nome}</a></dd></div>
             <div><dt class="eyebrow">Giras abertas</dt><dd class="mt-1 font-display text-xl">18h, de 14 em 14 dias</dd></div>
@@ -43,8 +43,8 @@ import entrada from '../assets/fotos/foto-5.jpg';
         <p>Nos pontos cantados de Umbanda, o caboclo vem da mata virgem e tem sua choupana na Jurema. A choupana é a morada simples do caboclo na floresta, um lugar de abrigo, de cura e de acolhimento. É esse o sentido que o nome carrega: uma morada aberta a quem precisa.</p>
         <p>O <strong class="text-tinta">{site.regente}</strong> é o guia que rege a Choupana. Caboclo da linha de Oxóssi, ele traz a força das matas, a firmeza e o conhecimento das ervas, e orienta os trabalhos da casa.</p>
 
-        <h2>Quem zela pela casa</h2>
-        <p>A Choupana é zelada por <strong class="text-tinta">{site.zelador.nome}</strong>. É ele quem conduz as giras, cuida da corrente de médiuns e recebe cada pessoa que chega. Como contou uma frequentadora no Google, é “um zelador que cuida de nós com muito amor e respeito”.</p>
+        <h2>Quem conduz a casa</h2>
+        <p>A Choupana é conduzida pelo <strong class="text-tinta">{site.mestre.nome}</strong>. É ele quem dirige as giras, cuida da corrente de médiuns e recebe cada pessoa que chega. Como contou uma frequentadora no Google, ele cuida de todos “com muito amor e respeito”.</p>
 
         <figure class="!my-12">
           <Image src={conga} alt="Congá da Choupana à luz do dia, com o arco amarelo, a cruz e o altar coberto de branco sobre o chão de areia" widths={[640, 1024, 1400]} sizes="(min-width: 1024px) 760px, 100vw" class="w-full rounded-3xl" />
