@@ -1,6 +1,6 @@
 # Choupana do Caboclo Mata Virgem
 
-> Templo de Umbanda de Raiz de Guiné em Lagoinha, Nova Iguaçu (RJ). Casa de caridade regida pelo Caboclo Mata Virgem e zelada por Pai Jorge Miguel, filiada ao Templo Filhos da Luz. Giras abertas de 14 em 14 dias, às 18h (quartas 18/11 e 02/12/2026; sábados a partir de 23/01/2027), com atendimento gratuito de Caboclos, Pretos Velhos, Crianças e Exu.
+> Templo de Umbanda de Raiz de Guiné em Lagoinha, Nova Iguaçu (RJ). Casa de caridade regida pelo Caboclo Mata Virgem e conduzida pelo Mestre “Abayratan” Jorge Miguel, filiada ao Templo Filhos da Luz. Giras abertas de 14 em 14 dias, às 18h (quartas 18/11 e 02/12/2026; sábados a partir de 23/01/2027), com atendimento gratuito de Caboclos, Pretos Velhos, Crianças e Exu.
 
 ## Dados da casa
 - Endereço: R. Mercúrio, 70 – Lagoinha, Nova Iguaçu – RJ, CEP 26296-540
@@ -15,7 +15,7 @@
 
 ## Páginas
 - [Início](https://matavirgem.vercel.app/): apresentação da casa, linhas de trabalho, tour 360°, avaliações e como chegar
-- [A casa](https://matavirgem.vercel.app/a-casa/): história, regente, zelador e a Umbanda de Raiz de Guiné
+- [A casa](https://matavirgem.vercel.app/a-casa/): história, regente, Mestre “Abayratan” Jorge Miguel e a Umbanda de Raiz de Guiné
 - [Giras](https://matavirgem.vercel.app/giras/): dia, horário, como funciona a gira, linhas e doações
 - [Primeira visita](https://matavirgem.vercel.app/primeira-visita/): passo a passo para quem vai a um terreiro pela primeira vez
 - [Tour 360°](https://matavirgem.vercel.app/tour-virtual/): 12 ambientes da casa em fotos 360°, de dia e à noite
