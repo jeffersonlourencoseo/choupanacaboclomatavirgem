@@ -9,6 +9,7 @@ import { site, whatsappLink } from '../config/site';
 import { faqGeral } from '../data/faq';
 import { depoimentos } from '../data/depoimentos';
 import PostCard from '../components/PostCard.astro';
+import ProximaGira from '../components/ProximaGira.astro';
 import { postsPublicados } from '../lib/blog';
 
 const ultimosPosts = (await postsPublicados()).slice(0, 3);
@@ -34,7 +35,7 @@ const visita = [
 ---
 <Base
   title="Choupana do Caboclo Mata Virgem | Umbanda em Nova Iguaçu"
-  description="Templo de Umbanda de Raiz de Guiné em Lagoinha, Nova Iguaçu (RJ). Giras abertas aos sábados, às 18h, com atendimento gratuito de Caboclos e Pretos Velhos."
+  description="Templo de Umbanda de Raiz de Guiné em Lagoinha, Nova Iguaçu (RJ). Giras abertas de 14 em 14 dias, às 18h, com atendimento gratuito de Caboclos e Pretos Velhos."
   faq={faqGeral}
   headerOverHero
 >
@@ -66,7 +67,7 @@ const visita = [
       </div>
 
       <dl class="mt-12 md:mt-16 grid grid-cols-2 md:grid-cols-4 gap-x-6 gap-y-5 border-t border-white/15 pt-6 text-sm md:text-[0.95rem]">
-        <div><dt class="text-white/55">Giras abertas</dt><dd class="mt-1 font-semibold">Sábados, 18h, quinzenais</dd></div>
+        <div><dt class="text-white/55">Próxima gira</dt><dd class="mt-1 font-semibold first-letter:uppercase"><a href="/giras/#calendario" class="hover:text-ocre no-underline"><ProximaGira formato="curto" /></a></dd></div>
         <div><dt class="text-white/55">Atendimento</dt><dd class="mt-1 font-semibold">Gratuito</dd></div>
         <div><dt class="text-white/55">Onde</dt><dd class="mt-1 font-semibold">Lagoinha, Nova Iguaçu</dd></div>
         <div><dt class="text-white/55">No Google</dt><dd class="mt-1 font-semibold"><span class="text-ocre" aria-hidden="true">★</span> {site.google.nota} · {site.google.avaliacoes} avaliações</dd></div>
@@ -159,7 +160,7 @@ const visita = [
           <p class="eyebrow">Tour virtual</p>
           <h2 id="tour-titulo" class="mt-3 text-4xl md:text-[3.4rem] text-anil-escuro">Entre na Choupana sem sair de casa</h2>
         </div>
-        <p class="lg:col-span-5 text-lg text-tinta-suave">Fotos em 360° da rua, do quintal, da assistência e do congá, de dia e em noite de gira. Arraste a imagem para olhar ao redor.</p>
+        <p class="lg:col-span-5 text-lg text-tinta-suave">Fotos em 360° da rua, do quintal, da assistência e do congá, de dia e em noite de gira. Arraste a imagem para olhar ao redor, ou veja a <a href="/galeria/" class="text-anil font-semibold underline">galeria de fotos</a>.</p>
       </div>
       <Tour360 />
     </div>

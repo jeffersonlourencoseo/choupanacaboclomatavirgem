@@ -1,11 +1,11 @@
 # Choupana do Caboclo Mata Virgem
 
-> Templo de Umbanda de Raiz de Guiné em Lagoinha, Nova Iguaçu (RJ). Casa de caridade regida pelo Caboclo Mata Virgem e zelada por Pai Jorge Miguel, filiada ao Templo Filhos da Luz. Giras abertas aos sábados, às 18h, de 15 em 15 dias, com atendimento gratuito de Caboclos, Pretos Velhos, Crianças e Exu.
+> Templo de Umbanda de Raiz de Guiné em Lagoinha, Nova Iguaçu (RJ). Casa de caridade regida pelo Caboclo Mata Virgem e zelada por Pai Jorge Miguel, filiada ao Templo Filhos da Luz. Giras abertas de 14 em 14 dias, às 18h (quartas 18/11 e 02/12/2026; sábados a partir de 23/01/2027), com atendimento gratuito de Caboclos, Pretos Velhos, Crianças e Exu.
 
 ## Dados da casa
 - Endereço: R. Mercúrio, 70 – Lagoinha, Nova Iguaçu – RJ, CEP 26296-540
 - WhatsApp e telefone: (21) 97126-4678
-- Giras abertas: sábados, 18h, quinzenais (confirmar a data pelo WhatsApp)
+- Giras abertas: 18h às 21h, de 14 em 14 dias. 2026: quartas 18/11 e 02/12. 2027: sábados a partir de 23/01 (calendário completo em /giras/#calendario)
 - Atendimento: gratuito
 - Orientação: vir de roupa clara e respeitar a liturgia da casa
 - Acolhimento: entrada, assentos e banheiro acessíveis; fraldário; estacionamento gratuito; casa que acolhe a comunidade LGBTQIA+
@@ -19,5 +19,6 @@
 - [Giras](https://matavirgem.vercel.app/giras/): dia, horário, como funciona a gira, linhas e doações
 - [Primeira visita](https://matavirgem.vercel.app/primeira-visita/): passo a passo para quem vai a um terreiro pela primeira vez
 - [Tour 360°](https://matavirgem.vercel.app/tour-virtual/): 12 ambientes da casa em fotos 360°, de dia e à noite
+- [Galeria](https://matavirgem.vercel.app/galeria/): fotos do congá, do terreiro, do salão, do quintal e da fachada
 - [Blog](https://matavirgem.vercel.app/blog/): textos semanais sobre Umbanda, entidades, giras, ervas e notícias da casa (RSS em /rss.xml)
 - [Como chegar](https://matavirgem.vercel.app/contato/): endereço, mapa, WhatsApp e redes sociais

@@ -1,0 +1,198 @@
+---
+import { Image, getImage } from 'astro:assets';
+import Base from '../layouts/Base.astro';
+import Chamada from '../components/Chamada.astro';
+import { site } from '../config/site';
+import { fotos, grupos } from '../data/galeria';
+
+// Versão grande de cada foto para a visualização ampliada
+const grandes = await Promise.all(
+  fotos.map((f) => getImage({ src: f.src, width: Math.min(1800, f.src.width), format: 'webp', quality: 80 })),
+);
+
+const schema = [
+  {
+    '@type': 'ImageGallery',
+    name: 'Galeria de fotos da Choupana do Caboclo Mata Virgem',
+    about: { '@id': `${site.url}/#templo` },
+    image: fotos.map((f, i) => ({
+      '@type': 'ImageObject',
+      contentUrl: new URL(grandes[i].src, site.url).href,
+      name: f.titulo,
+      description: f.alt,
+      contentLocation: { '@id': `${site.url}/#templo` },
+    })),
+  },
+];
+---
+<Base
+  title="Fotos da Choupana do Caboclo Mata Virgem | Galeria"
+  description="Veja fotos do templo de Umbanda Choupana do Caboclo Mata Virgem em Lagoinha, Nova Iguaçu: o congá, o terreiro de areia, o salão, o quintal e a fachada."
+  breadcrumbs={[{ name: 'Galeria', path: '/galeria/' }]}
+  schema={schema}
+>
+  <section class="pt-10 md:pt-16 pb-10">
+    <div class="wrap">
+      <nav aria-label="Trilha" class="text-sm text-tinta-suave">
+        <ol class="flex flex-wrap items-center gap-2">
+          <li><a href="/" class="hover:text-anil">Início</a></li>
+          <li aria-hidden="true">/</li>
+          <li aria-current="page" class="text-tinta">Galeria</li>
+        </ol>
+      </nav>
+      <div class="mt-10 grid gap-6 lg:grid-cols-12 items-end">
+        <div class="lg:col-span-7">
+          <p class="eyebrow">Galeria</p>
+          <h1 class="mt-4 text-[2.6rem] sm:text-5xl md:text-6xl lg:text-[4.4rem] text-anil-escuro">Fotos da Choupana</h1>
+        </div>
+        <p class="lg:col-span-5 text-lg md:text-xl text-tinta-suave">O congá, o terreiro de areia, o salão da assistência e o quintal, de dia e em noite de gira. Toque numa foto para ampliar.</p>
+      </div>
+
+      <div class="mt-10 flex flex-wrap gap-2" role="group" aria-label="Filtrar fotos">
+        <button type="button" class="filtro" data-filtro="todas" aria-pressed="true">Todas <span>{fotos.length}</span></button>
+        {grupos.map((g) => (
+          <button type="button" class="filtro" data-filtro={g} aria-pressed="false">{g} <span>{fotos.filter((f) => f.grupo === g).length}</span></button>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="pb-20 md:pb-28">
+    <div class="wrap">
+      <ul class="columns-2 lg:columns-3 gap-3 md:gap-5" data-galeria>
+        {fotos.map((f, i) => (
+          <li class="mb-3 md:mb-5 break-inside-avoid" data-grupo={f.grupo}>
+            <button
+              type="button"
+              class="group block w-full overflow-hidden rounded-2xl md:rounded-3xl bg-cal-2 text-left"
+              data-abrir={i}
+              data-grande={grandes[i].src}
+              data-titulo={f.titulo}
+              data-alt={f.alt}
+              aria-label={`Ampliar foto: ${f.titulo}`}
+            >
+              <Image
+                src={f.src}
+                alt={f.alt}
+                widths={[360, 560, 800]}
+                sizes="(min-width: 1024px) 370px, 50vw"
+                loading={i < 4 ? 'eager' : 'lazy'}
+                class="w-full h-auto transition-transform duration-500 group-hover:scale-[1.03]"
+              />
+            </button>
+            <p class="mt-2 px-1 text-sm text-tinta-suave">{f.titulo}</p>
+          </li>
+        ))}
+      </ul>
+
+      <p class="mt-12 text-tinta-suave">Quer ver a casa por inteiro? Faça o <a href="/tour-virtual/" class="text-anil font-semibold underline">tour virtual em 360°</a>.</p>
+    </div>
+  </section>
+
+  <dialog class="lightbox" data-lightbox aria-label="Foto ampliada">
+    <div class="relative flex h-full w-full flex-col">
+      <div class="flex items-center justify-between gap-4 px-4 py-3 md:px-6 text-white">
+        <p class="text-sm text-white/70" data-contador></p>
+        <button type="button" class="grid place-items-center size-11 rounded-full bg-white/10 hover:bg-white/20" data-fechar aria-label="Fechar">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
+        </button>
+      </div>
+      <figure class="relative flex-1 min-h-0 flex items-center justify-center px-2 md:px-20">
+        <img data-img alt="" class="max-h-full max-w-full object-contain rounded-xl select-none" decoding="async" />
+        <button type="button" class="nav-btn left-2 md:left-5" data-ant aria-label="Foto anterior">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M15 6l-6 6 6 6"/></svg>
+        </button>
+        <button type="button" class="nav-btn right-2 md:right-5" data-prox aria-label="Próxima foto">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg>
+        </button>
+      </figure>
+      <p class="px-4 py-4 md:py-5 text-center font-display text-lg md:text-xl text-white" data-legenda></p>
+    </div>
+  </dialog>
+
+  <Chamada local="galeria_chamada" titulo="Venha conhecer de perto" />
+</Base>
+
+<style>
+  .filtro {
+    display: inline-flex; align-items: center; gap: .5rem;
+    min-height: 2.75rem; padding: .5rem 1.1rem; border-radius: 999px;
+    font-weight: 600; font-size: .95rem;
+    background: var(--color-cal-2); box-shadow: inset 0 0 0 1px var(--color-linha);
+  }
+  .filtro span { font-weight: 500; font-size: .8rem; opacity: .65; }
+  .filtro[aria-pressed='true'] { background: var(--color-anil); color: #fff; box-shadow: none; }
+  .lightbox {
+    width: 100vw; height: 100dvh; max-width: none; max-height: none; margin: 0; padding: 0;
+    border: 0; background: rgb(10 11 34 / .96);
+  }
+  .lightbox::backdrop { background: rgb(10 11 34 / .9); }
+  .nav-btn {
+    position: absolute; top: 50%; translate: 0 -50%;
+    display: grid; place-items: center; width: 3rem; height: 3rem; border-radius: 999px;
+    background: rgb(255 255 255 / .12); color: #fff;
+  }
+  .nav-btn:hover { background: rgb(255 255 255 / .22); }
+</style>
+
+<script>
+  const btnsFiltro = [...document.querySelectorAll<HTMLButtonElement>('[data-filtro]')];
+  const itens = [...document.querySelectorAll<HTMLLIElement>('[data-galeria] > li')];
+  const abrir = [...document.querySelectorAll<HTMLButtonElement>('[data-abrir]')];
+  const dlg = document.querySelector<HTMLDialogElement>('[data-lightbox]')!;
+  const img = dlg.querySelector<HTMLImageElement>('[data-img]')!;
+  const legenda = dlg.querySelector<HTMLElement>('[data-legenda]')!;
+  const contador = dlg.querySelector<HTMLElement>('[data-contador]')!;
+  let visiveis = abrir;
+  let atual = 0;
+
+  btnsFiltro.forEach((b) =>
+    b.addEventListener('click', () => {
+      const f = b.dataset.filtro!;
+      btnsFiltro.forEach((x) => x.setAttribute('aria-pressed', String(x === b)));
+      itens.forEach((li) => (li.hidden = f !== 'todas' && li.dataset.grupo !== f));
+      visiveis = abrir.filter((a) => !a.closest('li')!.hidden);
+    }),
+  );
+
+  const mostrar = (i: number) => {
+    atual = (i + visiveis.length) % visiveis.length;
+    const b = visiveis[atual];
+    img.src = b.dataset.grande!;
+    img.alt = b.dataset.alt!;
+    legenda.textContent = b.dataset.titulo!;
+    contador.textContent = `${atual + 1} de ${visiveis.length}`;
+    // pré-carrega a próxima
+    const prox = visiveis[(atual + 1) % visiveis.length];
+    if (prox) new Image().src = prox.dataset.grande!;
+  };
+
+  abrir.forEach((b) =>
+    b.addEventListener('click', () => {
+      mostrar(visiveis.indexOf(b));
+      dlg.showModal();
+      document.documentElement.style.overflow = 'hidden';
+    }),
+  );
+  dlg.addEventListener('close', () => {
+    document.documentElement.style.overflow = '';
+    visiveis[atual]?.focus();
+  });
+  dlg.querySelector('[data-fechar]')!.addEventListener('click', () => dlg.close());
+  dlg.querySelector('[data-ant]')!.addEventListener('click', () => mostrar(atual - 1));
+  dlg.querySelector('[data-prox]')!.addEventListener('click', () => mostrar(atual + 1));
+  dlg.addEventListener('click', (e) => { if (e.target === dlg || (e.target as HTMLElement).tagName === 'FIGURE') dlg.close(); });
+  dlg.addEventListener('keydown', (e) => {
+    if (e.key === 'ArrowLeft') mostrar(atual - 1);
+    if (e.key === 'ArrowRight') mostrar(atual + 1);
+  });
+  // Deslizar no celular
+  let x0: number | null = null;
+  dlg.addEventListener('touchstart', (e) => (x0 = e.touches[0].clientX), { passive: true });
+  dlg.addEventListener('touchend', (e) => {
+    if (x0 === null) return;
+    const dx = e.changedTouches[0].clientX - x0;
+    if (Math.abs(dx) > 50) mostrar(atual + (dx < 0 ? 1 : -1));
+    x0 = null;
+  });
+</script>

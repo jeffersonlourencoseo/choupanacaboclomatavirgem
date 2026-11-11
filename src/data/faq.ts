@@ -7,7 +7,7 @@ export const faqGeral = [
   },
   {
     q: 'Quando acontecem as giras abertas?',
-    a: `As giras abertas acontecem de 15 em 15 dias, aos sábados, a partir das 18h. Como o calendário pode mudar em datas festivas, confirme a data da próxima gira pelo WhatsApp ${site.telefone} antes de vir.`,
+    a: `As giras abertas acontecem de 14 em 14 dias, a partir das 18h. Todas as datas estão no calendário da página Giras, com a próxima gira em destaque. Em 2027, as giras são sempre aos sábados.`,
   },
   {
     q: 'O atendimento é pago?',

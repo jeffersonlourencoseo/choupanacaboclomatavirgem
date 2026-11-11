@@ -4,14 +4,17 @@ import Base from '../layouts/Base.astro';
 import PageHero from '../components/PageHero.astro';
 import Faq from '../components/Faq.astro';
 import Chamada from '../components/Chamada.astro';
+import ProximaGira from '../components/ProximaGira.astro';
+import CalendarioGiras from '../components/CalendarioGiras.astro';
 import { site, whatsappLink } from '../config/site';
+import { proximas, horaInicio, horaFim } from '../data/giras';
 import salao from '../assets/fotos/salao-noite.jpg';
 import conga from '../assets/fotos/conga-noite-detalhe.jpg';
 
 const faq = [
   {
     q: 'Qual o dia e o horário da gira aberta?',
-    a: `As giras abertas da Choupana acontecem aos sábados, a partir das 18h, de 15 em 15 dias. A data pode mudar em feriados e datas festivas, por isso confirme a próxima gira pelo WhatsApp ${site.telefone}.`,
+    a: `As giras abertas da Choupana acontecem de 14 em 14 dias, a partir das 18h. O calendário completo está nesta página, com a próxima gira em destaque. Em 2027, as giras são sempre aos sábados.`,
   },
   {
     q: 'Quanto custa a consulta com as entidades?',
@@ -30,18 +33,35 @@ const faq = [
     a: 'A casa tem fraldário e espaço para amamentação. Se for levar crianças, converse antes com a casa pelo WhatsApp para saber qual é a melhor gira.',
   },
 ];
+
+// Schema de evento para cada gira futura (Google pode mostrar em "Eventos")
+const eventos = proximas().map((d) => ({
+  '@type': 'Event',
+  name: 'Gira aberta de Umbanda na Choupana do Caboclo Mata Virgem',
+  description: 'Gira aberta ao público com atendimento gratuito de Caboclos, Pretos Velhos, Crianças e Exu. Venha de roupa clara.',
+  startDate: `${d}T${horaInicio}:00-03:00`,
+  endDate: `${d}T${horaFim}:00-03:00`,
+  eventStatus: 'https://schema.org/EventScheduled',
+  eventAttendanceMode: 'https://schema.org/OfflineEventAttendanceMode',
+  isAccessibleForFree: true,
+  location: { '@id': `${site.url}/#templo` },
+  organizer: { '@id': `${site.url}/#templo` },
+  image: [`${site.url}/img/og-choupana.jpg`],
+  offers: { '@type': 'Offer', price: 0, priceCurrency: 'BRL', availability: 'https://schema.org/InStock', url: `${site.url}/giras/`, validFrom: '2026-11-01T00:00:00-03:00' },
+}));
 ---
 <Base
+  schema={eventos}
   title="Giras de Umbanda em Nova Iguaçu | Choupana Mata Virgem"
-  description="Giras abertas de Umbanda em Lagoinha, Nova Iguaçu, aos sábados às 18h, de 15 em 15 dias. Atendimento gratuito com Caboclos, Pretos Velhos, Crianças e Exu."
+  description="Calendário das giras abertas de Umbanda em Lagoinha, Nova Iguaçu: às 18h, de 14 em 14 dias, com atendimento gratuito de Caboclos, Pretos Velhos e Exu."
   breadcrumbs={[{ name: 'Giras', path: '/giras/' }]}
   faq={faq}
 >
   <PageHero
     crumb="Giras"
     eyebrow="Giras abertas"
-    titulo="Giras de Umbanda aos sábados, às 18h"
-    lead="De 15 em 15 dias, a Choupana abre as portas para o público. O atendimento é gratuito e qualquer pessoa pode vir, com respeito e roupa clara."
+    titulo="Giras abertas de Umbanda, às 18h"
+    lead="De 14 em 14 dias, a Choupana abre as portas para o público. O atendimento é gratuito e qualquer pessoa pode vir, com respeito e roupa clara."
     imagem={salao}
     alt="Salão da Choupana à noite, preparado para a gira, com as velas acesas no congá"
   />
@@ -49,14 +69,16 @@ const faq = [
   <section class="pb-20 md:pb-28">
     <div class="wrap">
       <dl class="grid sm:grid-cols-2 lg:grid-cols-4 gap-px bg-linha rounded-3xl overflow-hidden ring-1 ring-linha">
-        <div class="bg-cal p-7"><dt class="eyebrow">Quando</dt><dd class="mt-2 font-display text-2xl">Sábados, de 15 em 15 dias</dd></div>
+        <div class="bg-cal p-7"><dt class="eyebrow">Próxima gira</dt><dd class="mt-2 font-display text-2xl first-letter:uppercase"><ProximaGira formato="curto" /></dd></div>
         <div class="bg-cal p-7"><dt class="eyebrow">Horário</dt><dd class="mt-2 font-display text-2xl">A partir das 18h</dd></div>
         <div class="bg-cal p-7"><dt class="eyebrow">Atendimento</dt><dd class="mt-2 font-display text-2xl">Gratuito</dd></div>
         <div class="bg-cal p-7"><dt class="eyebrow">Onde</dt><dd class="mt-2 font-display text-2xl">R. Mercúrio, 70 – Lagoinha</dd></div>
       </dl>
-      <p class="mt-5 text-tinta-suave">Datas podem mudar em feriados e festas. <a href={whatsappLink('Olá! Gostaria de confirmar a data da próxima gira aberta da Choupana.')} target="_blank" rel="noopener" data-evento="clique_whatsapp" data-local="giras_confirmar_data" class="text-anil font-semibold underline">Confirme a próxima gira no WhatsApp</a>.</p>
+      <p class="mt-5 text-tinta-suave"><a href="#calendario" class="text-anil font-semibold underline">Ver todas as datas</a> · <a href={whatsappLink('Olá! Gostaria de confirmar a data da próxima gira aberta da Choupana.')} target="_blank" rel="noopener" data-evento="clique_whatsapp" data-local="giras_confirmar_data" class="text-anil font-semibold underline">Confirmar no WhatsApp</a></p>
     </div>
   </section>
+
+  <div class="border-t border-linha"><CalendarioGiras /></div>
 
   <section class="bg-areia/45 py-20 md:py-28">
     <div class="wrap grid gap-12 lg:grid-cols-12">

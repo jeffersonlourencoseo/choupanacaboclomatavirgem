@@ -25,7 +25,7 @@ const path = Astro.url.pathname;
       </span>
     </a>
 
-    <nav aria-label="Principal" class="hidden lg:block">
+    <nav aria-label="Principal" class="hidden xl:block">
       <ul class="flex items-center gap-1">
         {nav.map((item) => (
           <li>
@@ -33,7 +33,7 @@ const path = Astro.url.pathname;
               href={item.href}
               aria-current={path.startsWith(item.href) ? 'page' : undefined}
               class:list={[
-                'px-3.5 py-2 rounded-full text-[0.95rem] font-medium no-underline transition-colors',
+                'px-3 py-2 rounded-full text-[0.95rem] font-medium no-underline transition-colors whitespace-nowrap',
                 overHero ? 'hover:bg-white/12' : 'hover:bg-cal-2',
                 path.startsWith(item.href) && (overHero ? 'bg-white/14' : 'bg-cal-2 text-anil-escuro'),
               ]}
@@ -48,12 +48,12 @@ const path = Astro.url.pathname;
         href={whatsappLink()}
         target="_blank" rel="noopener"
         data-evento="clique_whatsapp" data-local="cabecalho"
-        class="btn btn-ocre hidden sm:inline-flex !min-h-11 !py-2 !px-5 text-[0.95rem]"
+        class="btn btn-ocre hidden sm:inline-flex !min-h-11 !py-2 !px-5 text-[0.95rem] whitespace-nowrap"
       >Falar no WhatsApp</a>
 
       <button
         type="button"
-        class:list={['lg:hidden grid place-items-center size-11 rounded-full', overHero ? 'bg-white/10 hover:bg-white/20' : 'bg-cal-2 hover:bg-areia/60']}
+        class:list={['xl:hidden grid place-items-center size-11 rounded-full', overHero ? 'bg-white/10 hover:bg-white/20' : 'bg-cal-2 hover:bg-areia/60']}
         aria-expanded="false" aria-controls="menu-movel" data-menu-btn
       >
         <span class="sr-only">Abrir menu</span>
@@ -63,7 +63,7 @@ const path = Astro.url.pathname;
     </div>
   </div>
 
-  <div id="menu-movel" class="lg:hidden hidden bg-noite text-white border-t border-white/10" data-menu>
+  <div id="menu-movel" class="xl:hidden hidden bg-noite text-white border-t border-white/10" data-menu>
     <nav aria-label="Menu" class="wrap py-4">
       <ul class="flex flex-col">
         <li><a href="/" class="block py-3.5 text-lg font-display border-b border-white/10 no-underline">Início</a></li>

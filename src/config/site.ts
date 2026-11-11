@@ -44,11 +44,11 @@ export const site = {
   whatsapp: '5521971264678',
   whatsappMsg: 'Olá! Vim pelo site da Choupana do Caboclo Mata Virgem e gostaria de saber mais sobre as giras.',
 
-  // Fonte: respostas do proprietário no Google ("de 15 em 15 dias, aos sábados às 18h").
+  // Fonte: a casa (11/11/2026). Datas completas em src/data/giras.ts.
   giras: {
-    resumo: 'Giras abertas de 15 em 15 dias, aos sábados, às 18h',
-    dia: 'Sábado',
-    frequencia: 'de 15 em 15 dias',
+    resumo: 'Giras abertas de 14 em 14 dias, às 18h',
+    dia: 'Sábado (em 2027)',
+    frequencia: 'de 14 em 14 dias',
     hora: '18h',
     atendimento: 'gratuito',
   },
@@ -99,6 +99,7 @@ export const nav = [
   { href: '/giras/', label: 'Giras' },
   { href: '/primeira-visita/', label: 'Primeira visita' },
   { href: '/tour-virtual/', label: 'Tour 360°' },
+  { href: '/galeria/', label: 'Fotos' },
   { href: '/blog/', label: 'Blog' },
   { href: '/contato/', label: 'Como chegar' },
 ];

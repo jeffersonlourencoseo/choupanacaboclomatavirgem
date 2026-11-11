@@ -1,0 +1,35 @@
+---
+// Mostra a próxima gira. O HTML sai com a data do dia do build e o script
+// recalcula no navegador, para o site nunca mostrar uma gira que já passou.
+import { datasGiras, proximas, formatoLongo, formatoCurto } from '../data/giras';
+
+interface Props { formato?: 'curto' | 'longo'; class?: string }
+const { formato = 'longo', class: cls = '' } = Astro.props;
+const prox = proximas()[0];
+const texto = prox ? (formato === 'curto' ? formatoCurto(prox) : formatoLongo(prox)) + ', 18h' : 'Consulte pelo WhatsApp';
+---
+<span class={cls} data-proxima-gira data-formato={formato} data-datas={JSON.stringify(datasGiras)}>{texto}</span>
+
+<script>
+  const hoje = new Date().toLocaleDateString('en-CA', { timeZone: 'America/Sao_Paulo' });
+  const fmt = (iso: string, curto: boolean) => {
+    const d = new Date(`${iso}T12:00:00Z`);
+    const s = curto
+      ? d.toLocaleDateString('pt-BR', { weekday: 'short', day: '2-digit', month: 'short', timeZone: 'UTC' }).replace(/\./g, '')
+      : d.toLocaleDateString('pt-BR', { weekday: 'long', day: 'numeric', month: 'long', timeZone: 'UTC' });
+    return `${s}, 18h`;
+  };
+  document.querySelectorAll<HTMLElement>('[data-proxima-gira]').forEach((el) => {
+    const datas: string[] = JSON.parse(el.dataset.datas || '[]');
+    const prox = datas.find((d) => d >= hoje);
+    el.textContent = prox ? fmt(prox, el.dataset.formato === 'curto') : 'Consulte pelo WhatsApp';
+  });
+  // Calendário: marca datas passadas e destaca a próxima
+  const itens = [...document.querySelectorAll<HTMLElement>('[data-gira-data]')];
+  let marcou = false;
+  itens.forEach((li) => {
+    const d = li.dataset.giraData!;
+    li.toggleAttribute('data-passada', d < hoje);
+    if (!marcou && d >= hoje) { li.setAttribute('data-proxima', ''); marcou = true; } else li.removeAttribute('data-proxima');
+  });
+</script>

@@ -44,7 +44,7 @@ Cada casa de Umbanda tem seus próprios fundamentos, e a forma como um guia trab
 
 ## Como conhecer o Caboclo Mata Virgem
 
-Se você sente o chamado da mata ou quer receber um passe de Caboclo, venha a uma de nossas giras abertas. Elas acontecem aos sábados, às 18h, de 15 em 15 dias, na R. Mercúrio, 70, em Lagoinha, Nova Iguaçu.
+Se você sente o chamado da mata ou quer receber um passe de Caboclo, venha a uma de nossas giras abertas. Elas acontecem de 14 em 14 dias, às 18h (veja as datas no [calendário de giras](/giras/#calendario)), na R. Mercúrio, 70, em Lagoinha, Nova Iguaçu.
 
 Venha de roupa clara e com o coração aberto. Se for sua primeira vez, leia antes o [guia da primeira visita](/primeira-visita/) ou conheça a casa pelo [tour virtual em 360°](/tour-virtual/).
 
