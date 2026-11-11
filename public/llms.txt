@@ -14,10 +14,10 @@
 - Google Maps: https://www.google.com/maps/place/?q=place_id:ChIJT5yXN9ZZmQARae5gYhyhCC4
 
 ## Páginas
-- [Início](https://choupanadocaboclomatavirgem.com.br/): apresentação da casa, linhas de trabalho, tour 360°, avaliações e como chegar
-- [A casa](https://choupanadocaboclomatavirgem.com.br/a-casa/): história, regente, zelador e a Umbanda de Raiz de Guiné
-- [Giras](https://choupanadocaboclomatavirgem.com.br/giras/): dia, horário, como funciona a gira, linhas e doações
-- [Primeira visita](https://choupanadocaboclomatavirgem.com.br/primeira-visita/): passo a passo para quem vai a um terreiro pela primeira vez
-- [Tour 360°](https://choupanadocaboclomatavirgem.com.br/tour-virtual/): 12 ambientes da casa em fotos 360°, de dia e à noite
-- [Blog](https://choupanadocaboclomatavirgem.com.br/blog/): textos semanais sobre Umbanda, entidades, giras, ervas e notícias da casa (RSS em /rss.xml)
-- [Como chegar](https://choupanadocaboclomatavirgem.com.br/contato/): endereço, mapa, WhatsApp e redes sociais
+- [Início](https://matavirgem.vercel.app/): apresentação da casa, linhas de trabalho, tour 360°, avaliações e como chegar
+- [A casa](https://matavirgem.vercel.app/a-casa/): história, regente, zelador e a Umbanda de Raiz de Guiné
+- [Giras](https://matavirgem.vercel.app/giras/): dia, horário, como funciona a gira, linhas e doações
+- [Primeira visita](https://matavirgem.vercel.app/primeira-visita/): passo a passo para quem vai a um terreiro pela primeira vez
+- [Tour 360°](https://matavirgem.vercel.app/tour-virtual/): 12 ambientes da casa em fotos 360°, de dia e à noite
+- [Blog](https://matavirgem.vercel.app/blog/): textos semanais sobre Umbanda, entidades, giras, ervas e notícias da casa (RSS em /rss.xml)
+- [Como chegar](https://matavirgem.vercel.app/contato/): endereço, mapa, WhatsApp e redes sociais

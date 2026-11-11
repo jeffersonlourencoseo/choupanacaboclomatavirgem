@@ -2,8 +2,8 @@
 // Itens marcados com "CONFIRMAR" vieram de fontes públicas e precisam do ok da casa.
 
 export const site = {
-  // CONFIRMAR: domínio definitivo. Trocar aqui e em astro.config.mjs (site).
-  url: 'https://choupanadocaboclomatavirgem.com.br',
+  // Domínio provisório da Vercel. Ao ter o domínio próprio, trocar aqui, em astro.config.mjs, public/robots.txt e public/llms.txt.
+  url: 'https://matavirgem.vercel.app',
   nome: 'Choupana do Caboclo Mata Virgem',
   nomeCurto: 'Choupana',
   tipo: 'Templo de Umbanda',
@@ -59,7 +59,7 @@ export const site = {
     facebook: 'https://www.facebook.com/ordem.jurema',
   },
 
-  // CONFIRMAR: lista vinda do resumo público do Google. Doação é sempre opcional.
+  // Fonte: descrição do Perfil da Empresa no Google (dados.txt). Doação é sempre opcional.
   doacoes: [
     'Velas palito brancas',
     'Velas de 7 dias brancas',

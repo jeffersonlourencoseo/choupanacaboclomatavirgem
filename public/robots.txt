@@ -38,4 +38,4 @@ Allow: /
 User-agent: cohere-ai
 Allow: /
 
-Sitemap: https://choupanadocaboclomatavirgem.com.br/sitemap-index.xml
+Sitemap: https://matavirgem.vercel.app/sitemap-index.xml

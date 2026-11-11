@@ -32,12 +32,12 @@ O post entra automaticamente na listagem `/blog/`, na home ("Palavras da mata"),
 
 Title e description no tamanho certo, canonical, Open Graph e Twitter Card, schema `@graph` (PlaceOfWorship + LocalBusiness, Person, WebPage, Breadcrumb, FAQPage, ImageGallery), sitemap, `robots.txt` com robôs de IA liberados, `llms.txt`, cabeçalhos de segurança e cache em `vercel.json`, eventos GA4 (`clique_whatsapp` com `local_botao`, `clique_telefone`, `clique_rota`, `tour_cena`).
 
-## Confirmar com a casa antes de publicar
+## Pendências com a casa
 
-1. **Domínio**: hoje está `choupanadocaboclomatavirgem.com.br` em `src/config/site.ts`, `astro.config.mjs`, `public/robots.txt` e `public/llms.txt`.
+1. **Domínio**: provisório `matavirgem.vercel.app`. Ao ter o domínio próprio, trocar em `src/config/site.ts`, `astro.config.mjs`, `public/robots.txt` e `public/llms.txt`.
 2. **Endereço**: o Google diz R. Mercúrio, 70 (Lagoinha); a bio do Instagram diz Rua Netuno, 61 (Vila Olímpio 2). O site usa o do Google.
 3. **Giras**: "sábados, 18h, de 15 em 15 dias" (das respostas no Google). O evento postado no Perfil cita 18/nov (uma quarta-feira).
-4. **Doações**: a lista em `site.doacoes` veio do resumo público do Google.
+4. **Doações**: confirmadas pela descrição do Perfil no Google.
 5. **Textos doutrinários** (linhas, Raiz de Guiné, Caboclo Mata Virgem como caboclo de Oxóssi): pedir para o Pai Jorge Miguel revisar.
 6. **Facebook**: `facebook.com/ordem.jurema` (o nome da página bate, mas confirmar).
 7. **GA4**: preencher `ga4Id` quando criar a propriedade.
