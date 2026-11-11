@@ -36,7 +36,7 @@ Datas para confirmar com a casa: 06/02/2027 (sábado de Carnaval), 01/05/2027 (D
 
 ## Galeria
 
-`/galeria/`, com 17 fotos em três grupos (Congá, Salão, Quintal e fachada) e ampliação com setas, teclado e deslizar. Para adicionar uma foto: coloque em `src/assets/galeria/` e inclua uma linha em `src/data/galeria.ts`.
+`/galeria/`, com as fotos estáticas da casa (pasta `fotos 11.11`) e ampliação com setas, teclado e deslizar. Para adicionar uma foto: coloque em `src/assets/fotos/` e inclua uma linha em `src/data/galeria.ts`.
 
 ## SEO técnico já feito
 

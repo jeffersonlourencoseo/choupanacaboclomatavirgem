@@ -19,6 +19,6 @@
 - [Giras](https://matavirgem.vercel.app/giras/): dia, horário, como funciona a gira, linhas e doações
 - [Primeira visita](https://matavirgem.vercel.app/primeira-visita/): passo a passo para quem vai a um terreiro pela primeira vez
 - [Tour 360°](https://matavirgem.vercel.app/tour-virtual/): 12 ambientes da casa em fotos 360°, de dia e à noite
-- [Galeria](https://matavirgem.vercel.app/galeria/): fotos do congá, do terreiro, do salão, do quintal e da fachada
+- [Galeria](https://matavirgem.vercel.app/galeria/): fotos do congá, do terreiro, da assistência e do salão
 - [Blog](https://matavirgem.vercel.app/blog/): textos semanais sobre Umbanda, entidades, giras, ervas e notícias da casa (RSS em /rss.xml)
 - [Como chegar](https://matavirgem.vercel.app/contato/): endereço, mapa, WhatsApp e redes sociais
