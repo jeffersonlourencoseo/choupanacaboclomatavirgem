@@ -19,7 +19,7 @@ const proxima = datasGiras.find((d) => d >= hoje);
         <div class="rounded-3xl bg-noite text-white p-7 on-dark">
           <p class="eyebrow">Próxima gira</p>
           <p class="mt-2 font-display text-3xl first-letter:uppercase"><ProximaGira /></p>
-          <a href={whatsappLink('Olá! Quero confirmar minha presença na próxima gira aberta da Choupana.')} target="_blank" rel="noopener" data-evento="clique_whatsapp" data-local="calendario_proxima" class="btn btn-ocre mt-5 !min-h-11 !py-2">Avisar que vou</a>
+          <a href={whatsappLink()} target="_blank" rel="noopener" data-evento="clique_whatsapp" data-local="calendario_proxima" class="btn btn-ocre mt-5 !min-h-11 !py-2">Avisar que vou</a>
         </div>
       </div>
     </div>
@@ -44,7 +44,7 @@ const proxima = datasGiras.find((d) => d >= hoje);
         </div>
       ))}
     </div>
-    <p class="mt-10 text-sm text-tinta-suave">Em feriados e datas festivas a casa pode mudar o calendário. Na dúvida, confirme pelo WhatsApp {site.telefone}.</p>
+    <p class="mt-10 text-sm text-tinta-suave">Em feriados e datas festivas, a casa pode mudar o calendário. Na dúvida, confirme pelo WhatsApp <a href={whatsappLink()} target="_blank" rel="noopener" data-evento="clique_whatsapp" data-local="calendario_rodape" class="text-anil font-semibold underline">{site.telefone}</a>.</p>
   </div>
 </section>
 

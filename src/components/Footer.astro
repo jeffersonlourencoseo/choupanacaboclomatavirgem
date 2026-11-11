@@ -39,7 +39,7 @@ const ano = new Date().getFullYear();
         <p class="eyebrow">Endereço e contato</p>
         <address class="not-italic mt-4 space-y-3">
           <p>{site.endereco.rua}<br />{site.endereco.bairro}, {site.endereco.cidade} – {site.endereco.uf}<br />CEP {site.endereco.cep}</p>
-          <p><a href={`tel:${site.telefoneE164}`} data-evento="clique_telefone" data-local="rodape" class="hover:text-white">{site.telefone}</a></p>
+          <p><a href={whatsappLink()} target="_blank" rel="noopener" data-evento="clique_whatsapp" data-local="rodape_numero" class="hover:text-white">{site.telefone}</a></p>
           <p class="text-white/70">{site.giras.resumo}.</p>
         </address>
         <div class="mt-5 flex flex-wrap gap-2">
