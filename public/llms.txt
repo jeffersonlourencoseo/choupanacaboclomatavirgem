@@ -20,5 +20,6 @@
 - [Primeira visita](https://matavirgem.vercel.app/primeira-visita/): passo a passo para quem vai a um terreiro pela primeira vez
 - [Tour 360°](https://matavirgem.vercel.app/tour-virtual/): 12 ambientes da casa em fotos 360°, de dia e à noite
 - [Galeria](https://matavirgem.vercel.app/galeria/): fotos do congá, do terreiro, da assistência e do salão
+- [Vídeos](https://matavirgem.vercel.app/videos/): vídeos curtos sobre a casa e sobre o ponto cantado segundo os ensinamentos de Mestre Yapacany (W. W. da Matta e Silva), com narração em texto
 - [Blog](https://matavirgem.vercel.app/blog/): textos semanais sobre Umbanda, entidades, giras, ervas e notícias da casa (RSS em /rss.xml)
 - [Como chegar](https://matavirgem.vercel.app/contato/): endereço, mapa, WhatsApp e redes sociais

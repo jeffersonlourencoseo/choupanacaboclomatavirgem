@@ -10,6 +10,7 @@ import { faqGeral } from '../data/faq';
 import { depoimentos } from '../data/depoimentos';
 import PostCard from '../components/PostCard.astro';
 import ProximaGira from '../components/ProximaGira.astro';
+import VideoCards from '../components/VideoCards.astro';
 import { postsPublicados } from '../lib/blog';
 
 const ultimosPosts = (await postsPublicados()).slice(0, 3);
@@ -163,6 +164,24 @@ const visita = [
         <p class="lg:col-span-5 text-lg text-tinta-suave">Fotos em 360° da rua, do quintal, da assistência e do congá, de dia e em noite de gira. Arraste a imagem para olhar ao redor, ou veja a <a href="/galeria/" class="text-anil font-semibold underline">galeria de fotos</a>.</p>
       </div>
       <Tour360 />
+    </div>
+  </section>
+
+  <!-- VÍDEOS -->
+  <section class="py-20 md:py-28" aria-labelledby="videos-titulo">
+    <div class="wrap grid gap-12 lg:grid-cols-12 items-center">
+      <div class="lg:col-span-5">
+        <p class="eyebrow">Vídeos</p>
+        <h2 id="videos-titulo" class="mt-3 text-4xl md:text-[3.4rem] text-anil-escuro">A Choupana em vídeo</h2>
+        <p class="mt-6 text-lg text-tinta-suave">Conheça a casa em menos de 30 segundos e aprenda, com os ensinamentos de Mestre Yapacany, por que o ponto cantado não é música.</p>
+        <a href="/videos/" class="mt-8 inline-flex items-center gap-2 font-semibold text-anil hover:text-anil-escuro">
+          Ver todos os vídeos
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+      </div>
+      <div class="lg:col-span-7">
+        <VideoCards local="home_videos" colunas="md:grid-cols-2" mostrarNarracao={false} />
+      </div>
     </div>
   </section>
 

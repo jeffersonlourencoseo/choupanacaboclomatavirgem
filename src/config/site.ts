@@ -102,6 +102,7 @@ export const nav = [
   { href: '/primeira-visita/', label: 'Primeira visita' },
   { href: '/tour-virtual/', label: 'Tour 360°' },
   { href: '/galeria/', label: 'Fotos' },
+  { href: '/videos/', label: 'Vídeos' },
   { href: '/blog/', label: 'Blog' },
   { href: '/contato/', label: 'Como chegar' },
 ];

@@ -38,6 +38,12 @@ Datas para confirmar com a casa: 06/02/2027 (sábado de Carnaval), 01/05/2027 (D
 
 `/galeria/`, com as fotos estáticas da casa (pasta `fotos 11.11`) e ampliação com setas, teclado e deslizar. Para adicionar uma foto: coloque em `src/assets/fotos/` e inclua uma linha em `src/data/galeria.ts`.
 
+## Vídeos
+
+`/videos/` e a seção "A Choupana em vídeo" na home. Cada vídeo vira um card com capa, duração e a narração em texto, e abre num player com legenda. Os arquivos ficam em `public/videos/`: `<id>.mp4` (720p), `<id>-capa-720.webp`, `<id>-capa-360.webp`, `<id>-capa.jpg` e `<id>.vtt` (legenda). Os dados (título, descrição, duração, data e narração) ficam em `src/data/videos.ts`. Cada vídeo também vira um VideoObject no schema.
+
+Para adicionar um vídeo: coloque o original na pasta `videos/` do cliente e me peça. Eu gero a versão web, a capa e a legenda, e incluo o card.
+
 ## SEO técnico já feito
 
 Title e description no tamanho certo, canonical, Open Graph e Twitter Card, schema `@graph` (PlaceOfWorship + LocalBusiness, Person, WebPage, Breadcrumb, FAQPage, ImageGallery), sitemap, `robots.txt` com robôs de IA liberados, `llms.txt`, cabeçalhos de segurança e cache em `vercel.json`, eventos GA4 (`clique_whatsapp` com `local_botao`, `clique_telefone`, `clique_rota`, `tour_cena`).
