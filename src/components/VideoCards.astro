@@ -12,11 +12,13 @@ const { videos = todos, local, mostrarNarracao = true, colunas = 'md:grid-cols-3
         class="group relative block aspect-[9/16] w-full overflow-hidden rounded-2xl md:rounded-3xl bg-noite text-left shadow-[0_20px_40px_-24px_rgb(14_16_48/.6)]"
         data-video={v.id}
         data-titulo={v.titulo}
+        data-legenda={v.narracao ? '1' : undefined}
         aria-label={`Assistir ao vídeo: ${v.titulo} (${duracaoTexto(v.duracao)})`}
       >
+        <img src={`/videos/${v.id}-capa-360.webp`} alt="" loading="lazy" decoding="async" aria-hidden="true" class="absolute inset-0 size-full object-cover scale-125 blur-2xl opacity-70" />
         <picture>
           <source type="image/webp" srcset={`/videos/${v.id}-capa-360.webp 360w, /videos/${v.id}-capa-720.webp 720w`} sizes="(min-width: 1024px) 280px, (min-width: 768px) 30vw, 50vw" />
-          <img src={`/videos/${v.id}-capa.jpg`} alt="" width="720" height="1280" loading="lazy" decoding="async" class="size-full object-cover transition-transform duration-500 group-hover:scale-[1.04]" />
+          <img src={`/videos/${v.id}-capa.jpg`} alt="" loading="lazy" decoding="async" class="relative size-full object-contain transition-transform duration-500 group-hover:scale-[1.04]" />
         </picture>
         <span class="absolute inset-0 bg-gradient-to-t from-noite/70 via-transparent to-transparent" aria-hidden="true"></span>
         <span class="absolute inset-x-3 bottom-3 flex items-center justify-between gap-2" aria-hidden="true">
@@ -27,9 +29,10 @@ const { videos = todos, local, mostrarNarracao = true, colunas = 'md:grid-cols-3
           <span class="rounded-md bg-noite/80 px-2 py-0.5 text-xs font-semibold text-white">{duracaoTexto(v.duracao)}</span>
         </span>
       </button>
-      <h3 class="mt-4 font-display text-xl md:text-2xl leading-snug text-anil-escuro">{v.titulo}</h3>
+      <p class="eyebrow mt-4 !text-[0.7rem]">{v.categoria}</p>
+      <h3 class="mt-1.5 font-display text-xl md:text-2xl leading-snug text-anil-escuro">{v.titulo}</h3>
       <p class="mt-2 text-sm md:text-[0.95rem] text-tinta-suave">{v.descricao}</p>
-      {mostrarNarracao && (
+      {mostrarNarracao && v.narracao && (
         <details class="group mt-3">
           <summary class="inline-flex cursor-pointer list-none items-center gap-1.5 text-sm font-semibold text-anil [&::-webkit-details-marker]:hidden">
             Ler a narração
@@ -51,7 +54,7 @@ const { videos = todos, local, mostrarNarracao = true, colunas = 'md:grid-cols-3
       </button>
     </div>
     <video
-      class="aspect-[9/16] w-full max-w-[min(100%,calc((100dvh-7rem)*9/16))] rounded-2xl bg-black"
+      class="block h-auto max-h-[calc(100dvh-7rem)] w-auto max-w-full rounded-2xl bg-black"
       controls playsinline preload="none" data-player-video
     ></video>
   </div>
@@ -76,7 +79,8 @@ const { videos = todos, local, mostrarNarracao = true, colunas = 'md:grid-cols-3
       origem = btn;
       titulo.textContent = btn.dataset.titulo || '';
       video.poster = `/videos/${id}-capa-720.webp`;
-      video.innerHTML = `<source src="/videos/${id}.mp4" type="video/mp4"><track kind="captions" srclang="pt-BR" label="Português" src="/videos/${id}.vtt">`;
+      video.innerHTML = `<source src="/videos/${id}.mp4" type="video/mp4">` +
+        (btn.dataset.legenda ? `<track kind="captions" srclang="pt-BR" label="Português" src="/videos/${id}.vtt">` : '');
       video.load();
       player.showModal();
       document.documentElement.style.overflow = 'hidden';
